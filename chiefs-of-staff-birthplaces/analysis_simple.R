@@ -66,63 +66,49 @@ province_counts <- chiefs_data %>%
 cat("\nProvince-level counts:\n")
 print(province_counts)
 
-# Download Turkey GeoJSON (province level)
-geojson_file <- "data/turkey_provinces_r.geojson"
+# Download Turkey GeoJSON (country boundary for context)
+geojson_file <- "data/turkey_country.geojson"
 
-if (!file.exists(geojson_file)) {
-  cat("\nDownloading Turkey province boundaries...\n")
+if (!file.exists(geojson_file) || file.size(geojson_file) < 1000) {
+  cat("\nDownloading Turkey map...\n")
   
-  # Try to download from a reliable source
   tryCatch({
-    url <- "https://raw.githubusercontent.com/codefortr/turkeygeo json/master/geo/tr-cities-basic.json"
-    download.file(url, geojson_file, method = "curl", quiet = FALSE)
+    suppressPackageStartupMessages({
+      if (!require("rnaturalearth", quietly = TRUE)) install.packages("rnaturalearth")
+      library(rnaturalearth)
+    })
+    
+    world <- ne_countries(scale = 'medium', returnclass = 'sf')
+    turkey_country <- world[world$name == 'Turkey', ]
+    st_write(turkey_country, geojson_file, delete_dsn = TRUE, quiet = TRUE)
+    cat("  ✓ Downloaded Turkey country boundary\n")
   }, error = function(e) {
-    cat("  Download failed, trying alternative source...\n")
-    # Create a simple GeoJSON with approximate province locations
-    # This is a fallback - ideally we'd have actual boundaries
-    cat("  Creating simplified province map...\n")
+    cat("  Could not download map:", e$message, "\n")
   })
 }
+
+# Read Turkey country boundary (for base map)
+turkey_country <- st_read(geojson_file, quiet = TRUE)
+cat("\nLoaded Turkey country boundary\n")
 
 # Read Turkey map data
 cat("\nLoading Turkey province map data...\n")
 
-# Try to read the GeoJSON
-turkey_sf <- tryCatch({
-  st_read(geojson_file, quiet = TRUE)
-}, error = function(e) {
-  cat("  Could not load GeoJSON, creating from coordinates...\n")
-  # Create simple points that we'll buffer to make "provinces"
-  coords_data <- read.csv("data/city_coordinates.csv", stringsAsFactors = FALSE, fileEncoding = "UTF-8")
-  
-  # Convert to sf object with points
-  turkey_sf_points <- st_as_sf(coords_data, 
-                                 coords = c("longitude", "latitude"),
-                                 crs = 4326)
-  
-  # Buffer points to create circular "provinces" (50km radius)
-  turkey_sf_buffered <- st_buffer(turkey_sf_points, dist = 0.5)  # ~50km in degrees
-  
-  turkey_sf_buffered$name <- turkey_sf_buffered$city
-  return(turkey_sf_buffered)
-})
+# Create visible province areas from city coordinates
+coords_data <- read.csv("data/city_coordinates.csv", stringsAsFactors = FALSE, fileEncoding = "UTF-8")
 
-cat("  Loaded", nrow(turkey_sf), "province boundaries\n")
+# Convert to sf object with points
+turkey_sf_points <- st_as_sf(coords_data, 
+                               coords = c("longitude", "latitude"),
+                               crs = 4326)
 
-# Get the name column (could be different in different GeoJSONs)
-name_cols <- names(turkey_sf)
-name_col <- name_cols[grep("name|NAME|il|city|province", name_cols, ignore.case = TRUE)][1]
+# Buffer points to create large circular "provinces" (approximately 1 degree = 100km)
+# Use larger buffer for better visibility
+turkey_sf <- st_buffer(turkey_sf_points, dist = 1.5)  # ~150km radius
 
-if (is.na(name_col)) {
-  cat("Available columns:", paste(names(turkey_sf), collapse = ", "), "\n")
-  name_col <- names(turkey_sf)[1]
-}
+turkey_sf$province_name <- turkey_sf$city
 
-cat("Using column '", name_col, "' as province name\n", sep = "")
-
-# Prepare turkey_sf for merging
-turkey_sf <- turkey_sf %>%
-  rename(province_name = !!name_col)
+cat("  Created", nrow(turkey_sf), "province areas from city coordinates\n")
 
 # Merge with province counts
 turkey_map_data <- turkey_sf %>%
@@ -158,14 +144,17 @@ military_green_palette <- c(
 cat("\nCreating map visualization...\n")
 
 # Create the choropleth map with geom_sf (polygon-based like ggplot geom_polygon)
-map_plot <- ggplot(data = turkey_map_data) +
-  geom_sf(aes(fill = chiefs_category), color = "white", size = 0.3) +
+map_plot <- ggplot() +
+  # Base layer: Turkey country boundary
+  geom_sf(data = turkey_country, fill = "#f5f5f5", color = "#999999", size = 0.5) +
+  # City/province layers colored by number of chiefs
+  geom_sf(data = turkey_map_data, aes(fill = chiefs_category), color = "white", size = 0.5, alpha = 0.8) +
   scale_fill_manual(
     values = military_green_palette,
     name = "Number of\nChiefs of Staff",
     drop = FALSE
   ) +
-  coord_sf(xlim = c(26, 45), ylim = c(36, 42.5)) +
+  coord_sf(xlim = c(26, 45), ylim = c(36, 42.5), expand = FALSE) +
   theme_void() +
   labs(
     title = "Turkish Chiefs of Staff - Birthplace Distribution by Province",
