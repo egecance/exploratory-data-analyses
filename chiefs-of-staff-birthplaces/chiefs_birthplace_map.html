@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_5f0393e9d3c3643b4ec55bfb60b1ae7d {
+                #map_1efa629fbfe69491fc78570f65fb9d57 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -55,28 +55,31 @@
     
     
 <div style="position: fixed; 
-     top: 10px; right: 10px; width: 220px; 
+     top: 10px; right: 10px; width: 240px; 
      background-color: white; z-index:9999; font-size:13px;
      border:2px solid grey; border-radius: 5px; padding: 12px;
      box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-     <p style="margin: 0 0 8px 0; font-weight: bold; font-size: 14px;">Dominant Branch</p>
-     <p style="margin: 5px 0;"><span style="color: #d62728; font-size: 18px;">●</span> Topçu (Artillery)</p>
-     <p style="margin: 5px 0;"><span style="color: #2ca02c; font-size: 18px;">●</span> Piyade (Infantry)</p>
-     <p style="margin: 5px 0;"><span style="color: #ff7f0e; font-size: 18px;">●</span> Muhabere (Signals)</p>
+     <p style="margin: 0 0 8px 0; font-weight: bold; font-size: 14px;">Number of Chiefs</p>
+     <p style="margin: 5px 0;"><span style="background-color: #2d3a1a; padding: 3px 12px; border-radius: 3px; color: white;">7+</span></p>
+     <p style="margin: 5px 0;"><span style="background-color: #3d4a2a; padding: 3px 12px; border-radius: 3px; color: white;">5-6</span></p>
+     <p style="margin: 5px 0;"><span style="background-color: #4b5320; padding: 3px 12px; border-radius: 3px; color: white;">3-4</span></p>
+     <p style="margin: 5px 0;"><span style="background-color: #697843; padding: 3px 12px; border-radius: 3px; color: white;">2</span></p>
+     <p style="margin: 5px 0;"><span style="background-color: #8a9a5b; padding: 3px 12px; border-radius: 3px; color: white;">1</span></p>
+     <p style="margin: 5px 0;"><span style="background-color: #e8e8e8; padding: 3px 12px; border-radius: 3px; color: #666;">0</span></p>
      <hr style="margin: 8px 0;">
      <p style="margin: 5px 0 0 0; font-size: 11px; color: #666;">
-         Circle size = number of chiefs
+         Circle size reflects number of chiefs
      </p>
 </div>
     
-            <div class="folium-map" id="map_5f0393e9d3c3643b4ec55bfb60b1ae7d" ></div>
+            <div class="folium-map" id="map_1efa629fbfe69491fc78570f65fb9d57" ></div>
         
 </body>
 <script>
     
     
-            var map_5f0393e9d3c3643b4ec55bfb60b1ae7d = L.map(
-                "map_5f0393e9d3c3643b4ec55bfb60b1ae7d",
+            var map_1efa629fbfe69491fc78570f65fb9d57 = L.map(
+                "map_1efa629fbfe69491fc78570f65fb9d57",
                 {
                     center: [39.0, 35.0],
                     crs: L.CRS.EPSG3857,
@@ -93,7 +96,7 @@
 
         
     
-            var tile_layer_64e5e773aadddf5bccea287c253268ac = L.tileLayer(
+            var tile_layer_03b73b958f58e5db9c31a288f4747e7e = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -110,326 +113,533 @@
             );
         
     
-            tile_layer_64e5e773aadddf5bccea287c253268ac.addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
+            tile_layer_03b73b958f58e5db9c31a288f4747e7e.addTo(map_1efa629fbfe69491fc78570f65fb9d57);
         
     
-            var circle_marker_5000c9e09334ffefc3ae81525f6755ab = L.circleMarker(
+            var circle_c2e99be8493583398a712c08b1d36446 = L.circle(
                 [41.0082, 28.9784],
-                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
+                {"bubblingMouseEvents": true, "color": "#2d3a1a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2d3a1a", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 35000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
         
     
-        var popup_77a4fb6cbdaf1355c507a4157a0919e5 = L.popup({
+        var popup_c4322b09cb823ecb2e610f1dcbc28a6e = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_6faa23259058a04ae701b82c8d7ffe98 = $(`<div id="html_6faa23259058a04ae701b82c8d7ffe98" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #d62728;">İstanbul</h4>         <p><b>Number of Chiefs:</b> 8</p>         <p><b>Dominant Branch:</b> Topçu</p>         <p><b>Region:</b> Marmara</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Topçu: 5</li><li>Piyade: 3</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Fevzi Çakmak</li><li>Nuri Yamut</li><li>Nurettin Baransel</li><li>Faruk Gürler</li><li>Semih Sancar</li><li>Necdet Üruğ</li><li>Necip Torumtay</li><li>Hilmi Özkök</li>         </ul>     </div>     </div>`)[0];
-                popup_77a4fb6cbdaf1355c507a4157a0919e5.setContent(html_6faa23259058a04ae701b82c8d7ffe98);
+                var html_9a11227574359ab85845177b8d7b7f60 = $(`<div id="html_9a11227574359ab85845177b8d7b7f60" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">İstanbul</h4>             <p><b>Number of Chiefs:</b> 8</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Topçu: 5</li><li>Piyade: 3</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Fevzi Çakmak</li><li>Nuri Yamut</li><li>Nurettin Baransel</li><li>Faruk Gürler</li><li>Semih Sancar</li><li>Necdet Üruğ</li><li>Necip Torumtay</li><li>Hilmi Özkök</li></ul></div></div>`)[0];
+                popup_c4322b09cb823ecb2e610f1dcbc28a6e.setContent(html_9a11227574359ab85845177b8d7b7f60);
             
         
 
-        circle_marker_5000c9e09334ffefc3ae81525f6755ab.bindPopup(popup_77a4fb6cbdaf1355c507a4157a0919e5)
+        circle_c2e99be8493583398a712c08b1d36446.bindPopup(popup_c4322b09cb823ecb2e610f1dcbc28a6e)
         ;
 
         
     
     
-            var circle_marker_c6a66204ea5a3ad36ea59bf22c68312d = L.circleMarker(
+            var circle_410491971e506b49481c633bd7ff6747 = L.circle(
                 [39.9334, 32.8597],
-                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
+                {"bubblingMouseEvents": true, "color": "#3d4a2a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3d4a2a", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 35000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
         
     
-        var popup_f30abee84ca387b41b6d6565e3b51428 = L.popup({
+        var popup_55457d00eb9ab936cc3e78eab73feec5 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_8f97aaa0db1f3c4782b26a4888bf2dc8 = $(`<div id="html_8f97aaa0db1f3c4782b26a4888bf2dc8" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #d62728;">Ankara</h4>         <p><b>Number of Chiefs:</b> 5</p>         <p><b>Dominant Branch:</b> Topçu</p>         <p><b>Region:</b> Central Anatolia</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Topçu: 2</li><li>Piyade: 2</li><li>Muhabere: 1</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Hüseyin Kıvrıkoğlu</li><li>Yaşar Büyükanıt</li><li>İlker Başbuğ</li><li>Metin Gürak</li><li>Selçuk Bayraktaroğlu</li>         </ul>     </div>     </div>`)[0];
-                popup_f30abee84ca387b41b6d6565e3b51428.setContent(html_8f97aaa0db1f3c4782b26a4888bf2dc8);
+                var html_8b3355fdb09ceb1527f1dbfebcd8b28c = $(`<div id="html_8b3355fdb09ceb1527f1dbfebcd8b28c" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">Ankara</h4>             <p><b>Number of Chiefs:</b> 5</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Topçu: 2</li><li>Piyade: 2</li><li>Muhabere: 1</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Hüseyin Kıvrıkoğlu</li><li>Yaşar Büyükanıt</li><li>İlker Başbuğ</li><li>Metin Gürak</li><li>Selçuk Bayraktaroğlu</li></ul></div></div>`)[0];
+                popup_55457d00eb9ab936cc3e78eab73feec5.setContent(html_8b3355fdb09ceb1527f1dbfebcd8b28c);
             
         
 
-        circle_marker_c6a66204ea5a3ad36ea59bf22c68312d.bindPopup(popup_f30abee84ca387b41b6d6565e3b51428)
+        circle_410491971e506b49481c633bd7ff6747.bindPopup(popup_55457d00eb9ab936cc3e78eab73feec5)
         ;
 
         
     
     
-            var circle_marker_3ab571c5a05fa920e0bbb3545f51920f = L.circleMarker(
+            var circle_04a0c5629919913fb1b40805e428f52f = L.circle(
                 [38.4192, 27.1287],
-                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
+                {"bubblingMouseEvents": true, "color": "#8a9a5b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8a9a5b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 18000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
         
     
-        var popup_2b3e6e84e511c7fe994449a3ec139be0 = L.popup({
+        var popup_761e9786bba8ec8a8e1f21c3383a09b4 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_58a5cb5f3ae4c96cbf92ca136b0055af = $(`<div id="html_58a5cb5f3ae4c96cbf92ca136b0055af" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #d62728;">İzmir</h4>         <p><b>Number of Chiefs:</b> 1</p>         <p><b>Dominant Branch:</b> Topçu</p>         <p><b>Region:</b> Aegean</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Topçu: 1</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>İsmet Paşa (İnönü)</li>         </ul>     </div>     </div>`)[0];
-                popup_2b3e6e84e511c7fe994449a3ec139be0.setContent(html_58a5cb5f3ae4c96cbf92ca136b0055af);
+                var html_e6df0d83515c41117057984c5bfada43 = $(`<div id="html_e6df0d83515c41117057984c5bfada43" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">İzmir</h4>             <p><b>Number of Chiefs:</b> 1</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Topçu: 1</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>İsmet Paşa (İnönü)</li></ul></div></div>`)[0];
+                popup_761e9786bba8ec8a8e1f21c3383a09b4.setContent(html_e6df0d83515c41117057984c5bfada43);
             
         
 
-        circle_marker_3ab571c5a05fa920e0bbb3545f51920f.bindPopup(popup_2b3e6e84e511c7fe994449a3ec139be0)
+        circle_04a0c5629919913fb1b40805e428f52f.bindPopup(popup_761e9786bba8ec8a8e1f21c3383a09b4)
         ;
 
         
     
     
-            var circle_marker_575a80113f07ff8da4e6655838d35fad = L.circleMarker(
-                [40.6401, 22.9444],
-                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
+            var circle_4614c325d385681bfbae6ab2fb5e4839 = L.circle(
+                [40.1826, 29.0665],
+                {"bubblingMouseEvents": true, "color": "#e8e8e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e8e8e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 15000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
         
     
-        var popup_3eac6cda5da3f0ccbe980f4d76d51ebb = L.popup({
+        var popup_dcb1ed701c0f1f15a132c6a12edc16a6 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_c72dd3546b8c9f66f1c82adbe8af9682 = $(`<div id="html_c72dd3546b8c9f66f1c82adbe8af9682" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #2ca02c;">Selanik</h4>         <p><b>Number of Chiefs:</b> 3</p>         <p><b>Dominant Branch:</b> Piyade</p>         <p><b>Region:</b> Macedonia</p>         <p><b>Country:</b> Greece</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Piyade: 2</li><li>Topçu: 1</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Kâzım Orbay</li><li>Salih Omurtak</li><li>Nafiz Gürman</li>         </ul>     </div>     </div>`)[0];
-                popup_3eac6cda5da3f0ccbe980f4d76d51ebb.setContent(html_c72dd3546b8c9f66f1c82adbe8af9682);
+                var html_a311246c692944b37aee38cfaf385828 = $(`<div id="html_a311246c692944b37aee38cfaf385828" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom: 10px; color: #666;">Bursa</h4>             <p style="color: #999;">No chiefs of staff from this city</p>         </div>         </div>`)[0];
+                popup_dcb1ed701c0f1f15a132c6a12edc16a6.setContent(html_a311246c692944b37aee38cfaf385828);
             
         
 
-        circle_marker_575a80113f07ff8da4e6655838d35fad.bindPopup(popup_3eac6cda5da3f0ccbe980f4d76d51ebb)
+        circle_4614c325d385681bfbae6ab2fb5e4839.bindPopup(popup_dcb1ed701c0f1f15a132c6a12edc16a6)
         ;
 
         
     
     
-            var circle_marker_f49c10a3f47332c727a369d510e233b1 = L.circleMarker(
-                [41.6771, 26.5557],
-                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
+            var circle_3d9e3268085a03a818a59fc2424b95d8 = L.circle(
+                [36.8969, 30.7133],
+                {"bubblingMouseEvents": true, "color": "#e8e8e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e8e8e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 15000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
         
     
-        var popup_07de5582a21c3fe8af414adb3e2787f4 = L.popup({
+        var popup_7889f18f8afb1b03fb7885955a2d4411 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_df66e14b809375c082f7c0b5b9a24cd2 = $(`<div id="html_df66e14b809375c082f7c0b5b9a24cd2" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #d62728;">Edirne</h4>         <p><b>Number of Chiefs:</b> 2</p>         <p><b>Dominant Branch:</b> Topçu</p>         <p><b>Region:</b> Thrace</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Topçu: 2</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Hakkı Tunaboylu</li><li>Rüştü Erdelhun</li>         </ul>     </div>     </div>`)[0];
-                popup_07de5582a21c3fe8af414adb3e2787f4.setContent(html_df66e14b809375c082f7c0b5b9a24cd2);
+                var html_50078bdf75146d40c47f3886d2b52314 = $(`<div id="html_50078bdf75146d40c47f3886d2b52314" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom: 10px; color: #666;">Antalya</h4>             <p style="color: #999;">No chiefs of staff from this city</p>         </div>         </div>`)[0];
+                popup_7889f18f8afb1b03fb7885955a2d4411.setContent(html_50078bdf75146d40c47f3886d2b52314);
             
         
 
-        circle_marker_f49c10a3f47332c727a369d510e233b1.bindPopup(popup_07de5582a21c3fe8af414adb3e2787f4)
+        circle_3d9e3268085a03a818a59fc2424b95d8.bindPopup(popup_7889f18f8afb1b03fb7885955a2d4411)
         ;
 
         
     
     
-            var circle_marker_9d0eccc7cae98d18c771cf20291211f9 = L.circleMarker(
-                [39.9208, 41.2675],
-                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
+            var circle_8b7d6a934a4eb2da758aff98ca145fe5 = L.circle(
+                [37.0, 35.3213],
+                {"bubblingMouseEvents": true, "color": "#e8e8e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e8e8e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 15000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
         
     
-        var popup_dd325cd8a93802baedfdcf3d43af6dec = L.popup({
+        var popup_4dabfc7b83dee76708dcb3756236bafe = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_99bd6c5f608e78818efde5d8ae17633d = $(`<div id="html_99bd6c5f608e78818efde5d8ae17633d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #2ca02c;">Erzurum</h4>         <p><b>Number of Chiefs:</b> 2</p>         <p><b>Dominant Branch:</b> Piyade</p>         <p><b>Region:</b> Eastern Anatolia</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Piyade: 1</li><li>Topçu: 1</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Ragıp Gümüşpala</li><li>Memduh Tağmaç</li>         </ul>     </div>     </div>`)[0];
-                popup_dd325cd8a93802baedfdcf3d43af6dec.setContent(html_99bd6c5f608e78818efde5d8ae17633d);
+                var html_84bcc729c7014428902dceae3f95443b = $(`<div id="html_84bcc729c7014428902dceae3f95443b" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom: 10px; color: #666;">Adana</h4>             <p style="color: #999;">No chiefs of staff from this city</p>         </div>         </div>`)[0];
+                popup_4dabfc7b83dee76708dcb3756236bafe.setContent(html_84bcc729c7014428902dceae3f95443b);
             
         
 
-        circle_marker_9d0eccc7cae98d18c771cf20291211f9.bindPopup(popup_dd325cd8a93802baedfdcf3d43af6dec)
+        circle_8b7d6a934a4eb2da758aff98ca145fe5.bindPopup(popup_4dabfc7b83dee76708dcb3756236bafe)
         ;
 
         
     
     
-            var circle_marker_605457548edc9350dc0933d219a01627 = L.circleMarker(
+            var circle_92ecdc16b0da4f13ec57ae5674514395 = L.circle(
+                [37.8746, 32.4932],
+                {"bubblingMouseEvents": true, "color": "#e8e8e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e8e8e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 15000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_213cb116a7dcde5c34c3b3f7d9b774f1 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_dc4af34bed0634f22c91bc87c42650d5 = $(`<div id="html_dc4af34bed0634f22c91bc87c42650d5" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom: 10px; color: #666;">Konya</h4>             <p style="color: #999;">No chiefs of staff from this city</p>         </div>         </div>`)[0];
+                popup_213cb116a7dcde5c34c3b3f7d9b774f1.setContent(html_dc4af34bed0634f22c91bc87c42650d5);
+            
+        
+
+        circle_92ecdc16b0da4f13ec57ae5674514395.bindPopup(popup_213cb116a7dcde5c34c3b3f7d9b774f1)
+        ;
+
+        
+    
+    
+            var circle_9f5ca03bdb80540d681a34cfa3cda780 = L.circle(
+                [37.0662, 37.3833],
+                {"bubblingMouseEvents": true, "color": "#e8e8e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e8e8e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 15000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_450b567330ad096cd224022c02db12a2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5512b419b08a89ef24fbef7576b0651f = $(`<div id="html_5512b419b08a89ef24fbef7576b0651f" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom: 10px; color: #666;">Gaziantep</h4>             <p style="color: #999;">No chiefs of staff from this city</p>         </div>         </div>`)[0];
+                popup_450b567330ad096cd224022c02db12a2.setContent(html_5512b419b08a89ef24fbef7576b0651f);
+            
+        
+
+        circle_9f5ca03bdb80540d681a34cfa3cda780.bindPopup(popup_450b567330ad096cd224022c02db12a2)
+        ;
+
+        
+    
+    
+            var circle_7a4fbfae5d0b95c6e399665d2ef9a034 = L.circle(
+                [37.9144, 40.2306],
+                {"bubblingMouseEvents": true, "color": "#e8e8e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e8e8e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 15000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_1ab9af1101dc912d0e461b04ea99adc5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_0b89f9bfaf0e6f53326a7af87c6d07be = $(`<div id="html_0b89f9bfaf0e6f53326a7af87c6d07be" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom: 10px; color: #666;">Diyarbakır</h4>             <p style="color: #999;">No chiefs of staff from this city</p>         </div>         </div>`)[0];
+                popup_1ab9af1101dc912d0e461b04ea99adc5.setContent(html_0b89f9bfaf0e6f53326a7af87c6d07be);
+            
+        
+
+        circle_7a4fbfae5d0b95c6e399665d2ef9a034.bindPopup(popup_1ab9af1101dc912d0e461b04ea99adc5)
+        ;
+
+        
+    
+    
+            var circle_e6faa1ff2335d18d8a7ca9c2b60a284b = L.circle(
+                [38.7205, 35.4826],
+                {"bubblingMouseEvents": true, "color": "#e8e8e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e8e8e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 15000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_d95063d796dfe5bc072ce2a79e50eaf8 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_664301e585e7edd1a527e35959c866db = $(`<div id="html_664301e585e7edd1a527e35959c866db" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom: 10px; color: #666;">Kayseri</h4>             <p style="color: #999;">No chiefs of staff from this city</p>         </div>         </div>`)[0];
+                popup_d95063d796dfe5bc072ce2a79e50eaf8.setContent(html_664301e585e7edd1a527e35959c866db);
+            
+        
+
+        circle_e6faa1ff2335d18d8a7ca9c2b60a284b.bindPopup(popup_d95063d796dfe5bc072ce2a79e50eaf8)
+        ;
+
+        
+    
+    
+            var circle_5b61739e4e88f0893d807cd8fa7589d3 = L.circle(
+                [39.7767, 30.5206],
+                {"bubblingMouseEvents": true, "color": "#e8e8e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e8e8e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 15000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_5febaa1cece817839b693ba9448b9d8a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ddab4755ace98f67324c2ec1899b0355 = $(`<div id="html_ddab4755ace98f67324c2ec1899b0355" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom: 10px; color: #666;">Eskişehir</h4>             <p style="color: #999;">No chiefs of staff from this city</p>         </div>         </div>`)[0];
+                popup_5febaa1cece817839b693ba9448b9d8a.setContent(html_ddab4755ace98f67324c2ec1899b0355);
+            
+        
+
+        circle_5b61739e4e88f0893d807cd8fa7589d3.bindPopup(popup_5febaa1cece817839b693ba9448b9d8a)
+        ;
+
+        
+    
+    
+            var circle_3369bffd273e1c43463edc0f702987a3 = L.circle(
+                [41.2867, 36.33],
+                {"bubblingMouseEvents": true, "color": "#e8e8e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e8e8e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 15000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_f78c48648f5f27c562971710b96ea654 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8431b4ed6fb8c0f1826c584e0385694b = $(`<div id="html_8431b4ed6fb8c0f1826c584e0385694b" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h4 style="margin-bottom: 10px; color: #666;">Samsun</h4>             <p style="color: #999;">No chiefs of staff from this city</p>         </div>         </div>`)[0];
+                popup_f78c48648f5f27c562971710b96ea654.setContent(html_8431b4ed6fb8c0f1826c584e0385694b);
+            
+        
+
+        circle_3369bffd273e1c43463edc0f702987a3.bindPopup(popup_f78c48648f5f27c562971710b96ea654)
+        ;
+
+        
+    
+    
+            var circle_1eba6e8a24747f8ee8fee3bef614aa8d = L.circle(
                 [41.0015, 39.7178],
-                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
+                {"bubblingMouseEvents": true, "color": "#697843", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#697843", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 22000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
         
     
-        var popup_0ec634fe8f1b86cad7f13817f1c6dc87 = L.popup({
+        var popup_01957bdebbc38185df81309167cb72ed = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_643118e42f901bb7b8f423d434bbb4af = $(`<div id="html_643118e42f901bb7b8f423d434bbb4af" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #d62728;">Trabzon</h4>         <p><b>Number of Chiefs:</b> 2</p>         <p><b>Dominant Branch:</b> Topçu</p>         <p><b>Region:</b> Black Sea</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Topçu: 1</li><li>Piyade: 1</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Cevdet Sunay</li><li>Necdet Özel</li>         </ul>     </div>     </div>`)[0];
-                popup_0ec634fe8f1b86cad7f13817f1c6dc87.setContent(html_643118e42f901bb7b8f423d434bbb4af);
+                var html_c0d45fe3619903f0d94e20c057176ae1 = $(`<div id="html_c0d45fe3619903f0d94e20c057176ae1" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">Trabzon</h4>             <p><b>Number of Chiefs:</b> 2</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Topçu: 1</li><li>Piyade: 1</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Cevdet Sunay</li><li>Necdet Özel</li></ul></div></div>`)[0];
+                popup_01957bdebbc38185df81309167cb72ed.setContent(html_c0d45fe3619903f0d94e20c057176ae1);
             
         
 
-        circle_marker_605457548edc9350dc0933d219a01627.bindPopup(popup_0ec634fe8f1b86cad7f13817f1c6dc87)
+        circle_1eba6e8a24747f8ee8fee3bef614aa8d.bindPopup(popup_01957bdebbc38185df81309167cb72ed)
         ;
 
         
     
     
-            var circle_marker_88af8b43124f69a79c5182f0a0678a87 = L.circleMarker(
-                [39.75, 39.5],
-                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
+            var circle_f4e5cb3b4dd9b89bfc73f79787c00ade = L.circle(
+                [39.9208, 41.2675],
+                {"bubblingMouseEvents": true, "color": "#697843", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#697843", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 22000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
         
     
-        var popup_f79a83171bb5eee422e774c75dab9ac9 = L.popup({
+        var popup_4297c2b880de77dc3fc9d294a6350ab3 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_ae8336cc3d2f020993d52e234f5b1960 = $(`<div id="html_ae8336cc3d2f020993d52e234f5b1960" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #2ca02c;">Erzincan</h4>         <p><b>Number of Chiefs:</b> 2</p>         <p><b>Dominant Branch:</b> Piyade</p>         <p><b>Region:</b> Eastern Anatolia</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Piyade: 1</li><li>Muhabere: 1</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Cemal Tural</li><li>Yaşar Güler</li>         </ul>     </div>     </div>`)[0];
-                popup_f79a83171bb5eee422e774c75dab9ac9.setContent(html_ae8336cc3d2f020993d52e234f5b1960);
+                var html_e70ddd83fec9615f3ab02dccc08d21e1 = $(`<div id="html_e70ddd83fec9615f3ab02dccc08d21e1" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">Erzurum</h4>             <p><b>Number of Chiefs:</b> 2</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Piyade: 1</li><li>Topçu: 1</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Ragıp Gümüşpala</li><li>Memduh Tağmaç</li></ul></div></div>`)[0];
+                popup_4297c2b880de77dc3fc9d294a6350ab3.setContent(html_e70ddd83fec9615f3ab02dccc08d21e1);
             
         
 
-        circle_marker_88af8b43124f69a79c5182f0a0678a87.bindPopup(popup_f79a83171bb5eee422e774c75dab9ac9)
+        circle_f4e5cb3b4dd9b89bfc73f79787c00ade.bindPopup(popup_4297c2b880de77dc3fc9d294a6350ab3)
         ;
 
         
     
     
-            var circle_marker_8c132f8f09bfd2399e634866d6d195a3 = L.circleMarker(
-                [38.3508, 28.5169],
-                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
-        
-    
-        var popup_39e415d5859a6bb952a95b6e80d0211f = L.popup({
-  "maxWidth": 320,
-});
-
-        
-            
-                var html_7a1a4f8db001f7dacddf85602000a38c = $(`<div id="html_7a1a4f8db001f7dacddf85602000a38c" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #d62728;">Alaşehir</h4>         <p><b>Number of Chiefs:</b> 1</p>         <p><b>Dominant Branch:</b> Topçu</p>         <p><b>Region:</b> Aegean</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Topçu: 1</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Kenan Evren</li>         </ul>     </div>     </div>`)[0];
-                popup_39e415d5859a6bb952a95b6e80d0211f.setContent(html_7a1a4f8db001f7dacddf85602000a38c);
-            
-        
-
-        circle_marker_8c132f8f09bfd2399e634866d6d195a3.bindPopup(popup_39e415d5859a6bb952a95b6e80d0211f)
-        ;
-
-        
-    
-    
-            var circle_marker_def52939b6b81c607e0a612a24e897f3 = L.circleMarker(
-                [37.7261, 30.2889],
-                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
-        
-    
-        var popup_675aedaf27700a8ffe9d108b1523f63e = L.popup({
-  "maxWidth": 320,
-});
-
-        
-            
-                var html_19735e9e3b639e71ec6ea279d06374ad = $(`<div id="html_19735e9e3b639e71ec6ea279d06374ad" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #2ca02c;">Burdur</h4>         <p><b>Number of Chiefs:</b> 1</p>         <p><b>Dominant Branch:</b> Piyade</p>         <p><b>Region:</b> Mediterranean</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Piyade: 1</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Nurettin Ersin</li>         </ul>     </div>     </div>`)[0];
-                popup_675aedaf27700a8ffe9d108b1523f63e.setContent(html_19735e9e3b639e71ec6ea279d06374ad);
-            
-        
-
-        circle_marker_def52939b6b81c607e0a612a24e897f3.bindPopup(popup_675aedaf27700a8ffe9d108b1523f63e)
-        ;
-
-        
-    
-    
-            var circle_marker_0922d701ef27ba91661969c317f3ea4b = L.circleMarker(
-                [38.6748, 39.2228],
-                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
-        
-    
-        var popup_16d18876b294618d530fc6c1eb682f93 = L.popup({
-  "maxWidth": 320,
-});
-
-        
-            
-                var html_e9f0756d6525e6defd6c46b8387530be = $(`<div id="html_e9f0756d6525e6defd6c46b8387530be" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #2ca02c;">Elazığ</h4>         <p><b>Number of Chiefs:</b> 1</p>         <p><b>Dominant Branch:</b> Piyade</p>         <p><b>Region:</b> Eastern Anatolia</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Piyade: 1</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Doğan Güreş</li>         </ul>     </div>     </div>`)[0];
-                popup_16d18876b294618d530fc6c1eb682f93.setContent(html_e9f0756d6525e6defd6c46b8387530be);
-            
-        
-
-        circle_marker_0922d701ef27ba91661969c317f3ea4b.bindPopup(popup_16d18876b294618d530fc6c1eb682f93)
-        ;
-
-        
-    
-    
-            var circle_marker_839ce462ec458405329bb70a4e04cfe7 = L.circleMarker(
-                [38.7507, 30.5567],
-                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
-        
-    
-        var popup_14573c56d92246dc016b3b2ac9e8d62e = L.popup({
-  "maxWidth": 320,
-});
-
-        
-            
-                var html_843e3012b23e8d5ee981557cfde66d35 = $(`<div id="html_843e3012b23e8d5ee981557cfde66d35" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #d62728;">Afyonkarahisar</h4>         <p><b>Number of Chiefs:</b> 1</p>         <p><b>Dominant Branch:</b> Topçu</p>         <p><b>Region:</b> Aegean</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Topçu: 1</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>İsmail Hakkı Karadayı</li>         </ul>     </div>     </div>`)[0];
-                popup_14573c56d92246dc016b3b2ac9e8d62e.setContent(html_843e3012b23e8d5ee981557cfde66d35);
-            
-        
-
-        circle_marker_839ce462ec458405329bb70a4e04cfe7.bindPopup(popup_14573c56d92246dc016b3b2ac9e8d62e)
-        ;
-
-        
-    
-    
-            var circle_marker_035a803e2f07809dd28cf59cd295a246 = L.circleMarker(
-                [41.3887, 33.7827],
-                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
-        
-    
-        var popup_d27be0a7f7474483ef6c76e5520e9826 = L.popup({
-  "maxWidth": 320,
-});
-
-        
-            
-                var html_803e369d6140cf1885bd51be495aebed = $(`<div id="html_803e369d6140cf1885bd51be495aebed" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #2ca02c;">Kastamonu</h4>         <p><b>Number of Chiefs:</b> 1</p>         <p><b>Dominant Branch:</b> Piyade</p>         <p><b>Region:</b> Black Sea</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Piyade: 1</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Işık Koşaner</li>         </ul>     </div>     </div>`)[0];
-                popup_d27be0a7f7474483ef6c76e5520e9826.setContent(html_803e369d6140cf1885bd51be495aebed);
-            
-        
-
-        circle_marker_035a803e2f07809dd28cf59cd295a246.bindPopup(popup_d27be0a7f7474483ef6c76e5520e9826)
-        ;
-
-        
-    
-    
-            var circle_marker_fe7d2dd7f7768fd362f4938c1ab47294 = L.circleMarker(
+            var circle_cbc67bc92a28ce4d4aecd976af6198a5 = L.circle(
                 [38.4891, 43.4089],
-                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2.5}
-            ).addTo(map_5f0393e9d3c3643b4ec55bfb60b1ae7d);
+                {"bubblingMouseEvents": true, "color": "#8a9a5b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8a9a5b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 18000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
         
     
-        var popup_2be0b15f66e807dc872310aadbbdff43 = L.popup({
+        var popup_8e50d121fe0d8260c1d65b22f92af7cf = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_46453bf85bf4b37ae4b6fa725342276e = $(`<div id="html_46453bf85bf4b37ae4b6fa725342276e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h4 style="margin-bottom: 10px; color: #2ca02c;">Van</h4>         <p><b>Number of Chiefs:</b> 1</p>         <p><b>Dominant Branch:</b> Piyade</p>         <p><b>Region:</b> Eastern Anatolia</p>         <p><b>Country:</b> Turkey</p>         <hr>         <p><b>Branch Distribution:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Piyade: 1</li>         </ul>         <hr>         <p><b>Chiefs from this city:</b></p>         <ul style="margin: 5px 0; padding-left: 20px;">     <li>Hulusi Akar</li>         </ul>     </div>     </div>`)[0];
-                popup_2be0b15f66e807dc872310aadbbdff43.setContent(html_46453bf85bf4b37ae4b6fa725342276e);
+                var html_aa52e0131380406e8f038719d53ac2ed = $(`<div id="html_aa52e0131380406e8f038719d53ac2ed" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">Van</h4>             <p><b>Number of Chiefs:</b> 1</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Piyade: 1</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Hulusi Akar</li></ul></div></div>`)[0];
+                popup_8e50d121fe0d8260c1d65b22f92af7cf.setContent(html_aa52e0131380406e8f038719d53ac2ed);
             
         
 
-        circle_marker_fe7d2dd7f7768fd362f4938c1ab47294.bindPopup(popup_2be0b15f66e807dc872310aadbbdff43)
+        circle_cbc67bc92a28ce4d4aecd976af6198a5.bindPopup(popup_8e50d121fe0d8260c1d65b22f92af7cf)
+        ;
+
+        
+    
+    
+            var circle_8570a085e056f94eb4f0c73906a912d6 = L.circle(
+                [41.6771, 26.5557],
+                {"bubblingMouseEvents": true, "color": "#697843", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#697843", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 22000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_ba3954b06a272873be1ee2e194af1a8e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3436d335c96157854badea4c15626a8e = $(`<div id="html_3436d335c96157854badea4c15626a8e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">Edirne</h4>             <p><b>Number of Chiefs:</b> 2</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Topçu: 2</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Hakkı Tunaboylu</li><li>Rüştü Erdelhun</li></ul></div></div>`)[0];
+                popup_ba3954b06a272873be1ee2e194af1a8e.setContent(html_3436d335c96157854badea4c15626a8e);
+            
+        
+
+        circle_8570a085e056f94eb4f0c73906a912d6.bindPopup(popup_ba3954b06a272873be1ee2e194af1a8e)
+        ;
+
+        
+    
+    
+            var circle_1095707be181f907d6d07082924115a7 = L.circle(
+                [39.75, 39.5],
+                {"bubblingMouseEvents": true, "color": "#697843", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#697843", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 22000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_9344487baa9a273719ac783950b4af4c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8c2e103c408bb8f9ffff7b3bf0655c5b = $(`<div id="html_8c2e103c408bb8f9ffff7b3bf0655c5b" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">Erzincan</h4>             <p><b>Number of Chiefs:</b> 2</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Piyade: 1</li><li>Muhabere: 1</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Cemal Tural</li><li>Yaşar Güler</li></ul></div></div>`)[0];
+                popup_9344487baa9a273719ac783950b4af4c.setContent(html_8c2e103c408bb8f9ffff7b3bf0655c5b);
+            
+        
+
+        circle_1095707be181f907d6d07082924115a7.bindPopup(popup_9344487baa9a273719ac783950b4af4c)
+        ;
+
+        
+    
+    
+            var circle_0291447759ed26512c87986127a194d5 = L.circle(
+                [38.3508, 28.5169],
+                {"bubblingMouseEvents": true, "color": "#8a9a5b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8a9a5b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 18000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_2052d59080534d92bdecfb95af9f76f9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_75b46464ce6544926992dc0139e74622 = $(`<div id="html_75b46464ce6544926992dc0139e74622" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">Alaşehir</h4>             <p><b>Number of Chiefs:</b> 1</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Topçu: 1</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Kenan Evren</li></ul></div></div>`)[0];
+                popup_2052d59080534d92bdecfb95af9f76f9.setContent(html_75b46464ce6544926992dc0139e74622);
+            
+        
+
+        circle_0291447759ed26512c87986127a194d5.bindPopup(popup_2052d59080534d92bdecfb95af9f76f9)
+        ;
+
+        
+    
+    
+            var circle_2a560601e8f936519567095e6757b2f8 = L.circle(
+                [37.7261, 30.2889],
+                {"bubblingMouseEvents": true, "color": "#8a9a5b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8a9a5b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 18000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_9956e6f113b397eedfc61ab26b7fc485 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_dd5ab58acfc2e535354ab75a29407861 = $(`<div id="html_dd5ab58acfc2e535354ab75a29407861" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">Burdur</h4>             <p><b>Number of Chiefs:</b> 1</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Piyade: 1</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Nurettin Ersin</li></ul></div></div>`)[0];
+                popup_9956e6f113b397eedfc61ab26b7fc485.setContent(html_dd5ab58acfc2e535354ab75a29407861);
+            
+        
+
+        circle_2a560601e8f936519567095e6757b2f8.bindPopup(popup_9956e6f113b397eedfc61ab26b7fc485)
+        ;
+
+        
+    
+    
+            var circle_22a1aa560dc4a7cac08770fb54364e43 = L.circle(
+                [38.6748, 39.2228],
+                {"bubblingMouseEvents": true, "color": "#8a9a5b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8a9a5b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 18000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_a3c49c0ae5e246d7baca2ee54312fca0 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b5cfb65192c185ec4f994fbb33f08130 = $(`<div id="html_b5cfb65192c185ec4f994fbb33f08130" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">Elazığ</h4>             <p><b>Number of Chiefs:</b> 1</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Piyade: 1</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Doğan Güreş</li></ul></div></div>`)[0];
+                popup_a3c49c0ae5e246d7baca2ee54312fca0.setContent(html_b5cfb65192c185ec4f994fbb33f08130);
+            
+        
+
+        circle_22a1aa560dc4a7cac08770fb54364e43.bindPopup(popup_a3c49c0ae5e246d7baca2ee54312fca0)
+        ;
+
+        
+    
+    
+            var circle_42c5dfb26f344cd82c65c02a8851df01 = L.circle(
+                [38.7507, 30.5567],
+                {"bubblingMouseEvents": true, "color": "#8a9a5b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8a9a5b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 18000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_efcbb313061a96f2e5b4b0aa5555caa4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_37f10db6789f5a9468023eaadec26ab9 = $(`<div id="html_37f10db6789f5a9468023eaadec26ab9" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">Afyonkarahisar</h4>             <p><b>Number of Chiefs:</b> 1</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Topçu: 1</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>İsmail Hakkı Karadayı</li></ul></div></div>`)[0];
+                popup_efcbb313061a96f2e5b4b0aa5555caa4.setContent(html_37f10db6789f5a9468023eaadec26ab9);
+            
+        
+
+        circle_42c5dfb26f344cd82c65c02a8851df01.bindPopup(popup_efcbb313061a96f2e5b4b0aa5555caa4)
+        ;
+
+        
+    
+    
+            var circle_4e7970206d66698ca74845cb27051280 = L.circle(
+                [41.3887, 33.7827],
+                {"bubblingMouseEvents": true, "color": "#8a9a5b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8a9a5b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 18000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_13dc67a250e5449d9650caabc218cdf5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e788fa739fe59418ef341b5ff8928276 = $(`<div id="html_e788fa739fe59418ef341b5ff8928276" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">Kastamonu</h4>             <p><b>Number of Chiefs:</b> 1</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Piyade: 1</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Işık Koşaner</li></ul></div></div>`)[0];
+                popup_13dc67a250e5449d9650caabc218cdf5.setContent(html_e788fa739fe59418ef341b5ff8928276);
+            
+        
+
+        circle_4e7970206d66698ca74845cb27051280.bindPopup(popup_13dc67a250e5449d9650caabc218cdf5)
+        ;
+
+        
+    
+    
+            var circle_e98b9a23964612648ca84ba5e599fd16 = L.circle(
+                [40.6401, 22.9444],
+                {"bubblingMouseEvents": true, "color": "#4b5320", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4b5320", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.8, "radius": 28000, "stroke": true, "weight": 2}
+            ).addTo(map_1efa629fbfe69491fc78570f65fb9d57);
+        
+    
+        var popup_8d4d9e498ab9492d0865e257b076815a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2f175dd0294932a50e64ae9bf29d17aa = $(`<div id="html_2f175dd0294932a50e64ae9bf29d17aa" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 280px;">             <h4 style="margin-bottom: 10px; color: #4b5320;">Selanik</h4>             <p><b>Number of Chiefs:</b> 3</p>             <hr>             <p><b>Branch Distribution:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Piyade: 2</li><li>Topçu: 1</li>             </ul>             <hr>             <p><b>Chiefs from this city:</b></p>             <ul style="margin: 5px 0; padding-left: 20px;">         <li>Kâzım Orbay</li><li>Salih Omurtak</li><li>Nafiz Gürman</li></ul></div></div>`)[0];
+                popup_8d4d9e498ab9492d0865e257b076815a.setContent(html_2f175dd0294932a50e64ae9bf29d17aa);
+            
+        
+
+        circle_e98b9a23964612648ca84ba5e599fd16.bindPopup(popup_8d4d9e498ab9492d0865e257b076815a)
         ;
 
         
