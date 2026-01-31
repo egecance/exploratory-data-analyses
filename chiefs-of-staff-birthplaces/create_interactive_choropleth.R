@@ -185,6 +185,17 @@ map <- leaflet(provinces_with_commanders) %>%
       )
     )
   ) %>%
+  addControl(
+    html = '<div id="info-button" onclick="document.getElementById(\'info-popup\').style.display = document.getElementById(\'info-popup\').style.display === \'none\' ? \'block\' : \'none\';" style="background: rgba(255,255,255,0.9); padding: 8px 10px; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+              <span style="font-size: 16px; font-weight: bold; color: #2d3a1a;">ℹ</span>
+            </div>
+            <div id="info-popup" style="display: none; position: absolute; top: 50px; left: 10px; background: rgba(255,255,255,0.97); padding: 20px 26px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 400px; z-index: 1000; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;">
+              <h3 style="margin: 0 0 14px 0; color: #2d3a1a; font-size: 17px; font-weight: 600; letter-spacing: 0.3px; line-height: 1.3;">Turkish Chief(s) of General Staff - Birthplace Distribution</h3>
+              <p style="margin: 0 0 10px 0; font-size: 14px; color: #444; line-height: 1.6; font-weight: 500;">Republic Era (1923-Present) • Total: 30 Chiefs</p>
+              <p style="margin: 0; font-size: 13px; color: #666; line-height: 1.5; font-style: italic;">Includes 4 from Thessaloniki/Greece, 1 from Rahova/Romania</p>
+            </div>',
+    position = "topleft"
+  ) %>%
   setView(lng = 32.5, lat = 39, zoom = 5)
 
 # Save the map
