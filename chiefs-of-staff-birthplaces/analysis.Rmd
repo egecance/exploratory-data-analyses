@@ -1,0 +1,331 @@
+---
+title: "Turkish Chiefs of Staff - Birthplace Analysis"
+subtitle: "Geographic Distribution with Province-Level Maps"
+author: "Analysis using R/ggplot2"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: cosmo
+    toc: true
+    toc_float: true
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.width = 12, fig.height = 8)
+```
+
+## Introduction
+
+This analysis examines the geographic distribution of birthplaces of Turkish Chiefs of Staff during the Republic era (1920-Present). Using actual province boundaries and `geom_polygon()` from ggplot2, we create choropleth maps that color entire provinces based on the number of military chiefs born there.
+
+## Load Required Libraries
+
+```{r libraries}
+# Install packages if needed
+packages <- c("tidyverse", "sf", "rnaturalearth", "rnaturalearthdata", "scales", "knitr")
+
+for (pkg in packages) {
+  if (!require(pkg, character.only = TRUE, quietly = TRUE)) {
+    install.packages(pkg)
+    library(pkg, character.only = TRUE)
+  }
+}
+```
+
+## Load Data
+
+```{r load-data}
+# Read the chiefs of staff data
+chiefs_data <- read.csv("data/chiefs_of_staff.csv", stringsAsFactors = FALSE, fileEncoding = "UTF-8")
+city_coords <- read.csv("data/city_coordinates.csv", stringsAsFactors = FALSE, fileEncoding = "UTF-8")
+
+# Display summary
+cat("Total Chiefs of Staff:", nrow(chiefs_data), "\n")
+cat("Unique Birthplaces:", length(unique(chiefs_data$birthplace)), "\n")
+
+# Show first few rows
+kable(head(chiefs_data, 10), caption = "First 10 Chiefs of Staff")
+```
+
+## Data Preparation
+
+```{r data-prep}
+# Count chiefs per city
+city_counts <- chiefs_data %>%
+  group_by(birthplace) %>%
+  summarise(
+    count = n(),
+    branches = paste(unique(branch), collapse = ", "),
+    .groups = 'drop'
+  ) %>%
+  arrange(desc(count))
+
+kable(city_counts, caption = "Chiefs of Staff by Birthplace")
+
+# Map cities to provinces
+city_to_province <- data.frame(
+  city = c("İstanbul", "Ankara", "Selanik", "Edirne", "Erzurum", "Trabzon", 
+           "Erzincan", "İzmir", "Alaşehir", "Burdur", "Elazığ", 
+           "Afyonkarahisar", "Kastamonu", "Van"),
+  province = c("Istanbul", "Ankara", "Thessaloniki", "Edirne", "Erzurum", "Trabzon",
+               "Erzincan", "Izmir", "Manisa", "Burdur", "Elazig",
+               "Afyonkarahisar", "Kastamonu", "Van"),
+  in_turkey = c(TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, 
+                TRUE, TRUE, TRUE, TRUE, TRUE, 
+                TRUE, TRUE, TRUE),
+  stringsAsFactors = FALSE
+)
+
+# Add province mapping
+chiefs_data <- chiefs_data %>%
+  left_join(city_to_province, by = c("birthplace" = "city"))
+
+# Count chiefs per province
+province_counts <- chiefs_data %>%
+  filter(in_turkey == TRUE) %>%
+  group_by(province) %>%
+  summarise(
+    n_chiefs = n(),
+    cities = paste(unique(birthplace), collapse = ", "),
+    chiefs_names = paste(name, collapse = "; "),
+    .groups = 'drop'
+  ) %>%
+  arrange(desc(n_chiefs))
+
+kable(province_counts, caption = "Chiefs of Staff by Province")
+```
+
+## Geographic Data
+
+```{r geo-data}
+# Get Turkey province boundaries from Natural Earth
+turkey_provinces <- ne_states(country = "Turkey", returnclass = "sf")
+
+cat("Number of provinces in map data:", nrow(turkey_provinces), "\n")
+cat("Sample province names:", paste(head(turkey_provinces$name, 10), collapse = ", "), "\n")
+```
+
+## Merge Data with Geographic Boundaries
+
+```{r merge-data}
+# Merge the chiefs count data with map data
+turkey_map_data <- turkey_provinces %>%
+  left_join(province_counts, by = c("name" = "province"))
+
+# Fill NA values with 0 for provinces without chiefs
+turkey_map_data <- turkey_map_data %>%
+  mutate(
+    n_chiefs = ifelse(is.na(n_chiefs), 0, n_chiefs),
+    cities = ifelse(is.na(cities), "None", cities)
+  )
+
+# Create categorical variable for coloring
+turkey_map_data <- turkey_map_data %>%
+  mutate(
+    chiefs_category = case_when(
+      n_chiefs == 0 ~ "0",
+      n_chiefs == 1 ~ "1",
+      n_chiefs == 2 ~ "2",
+      n_chiefs >= 3 & n_chiefs <= 4 ~ "3-4",
+      n_chiefs >= 5 & n_chiefs <= 6 ~ "5-6",
+      n_chiefs >= 7 ~ "7+",
+      TRUE ~ "0"
+    ),
+    chiefs_category = factor(chiefs_category, 
+                            levels = c("0", "1", "2", "3-4", "5-6", "7+"))
+  )
+
+# Summary statistics
+cat("\nDistribution of provinces by number of chiefs:\n")
+table(turkey_map_data$chiefs_category)
+```
+
+## Main Map: Province-Level Choropleth
+
+This is the key visualization - using `geom_polygon()` (via `geom_sf()`) to color entire province areas based on the number of chiefs, similar to the R ggplot2 forest area example.
+
+```{r main-map, fig.width=14, fig.height=10}
+# Define military green color palette
+military_green_palette <- c(
+  "#e8e8e8",  # 0 chiefs - grey
+  "#8a9a5b",  # 1 chief
+  "#697843",  # 2 chiefs
+  "#4b5320",  # 3-4 chiefs - base military green
+  "#3d4a2a",  # 5-6 chiefs
+  "#2d3a1a"   # 7+ chiefs - darkest
+)
+
+# Create the main choropleth map
+map_plot <- ggplot(data = turkey_map_data) +
+  geom_sf(aes(fill = chiefs_category), color = "grey90", size = 0.2) +
+  scale_fill_manual(
+    values = military_green_palette,
+    name = "Number of\nChiefs of Staff",
+    drop = FALSE
+  ) +
+  coord_sf(xlim = c(26, 45), ylim = c(36, 42)) +
+  theme_void() +
+  labs(
+    title = "Turkish Chiefs of Staff - Birthplace Distribution by Province",
+    subtitle = paste0("Republic Era (1920-Present) • Total: ", 
+                     sum(turkey_map_data$n_chiefs, na.rm = TRUE), " Chiefs"),
+    caption = "Data: Turkish Wikipedia • Visualization: R/ggplot2 with geom_sf()"
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 18, face = "bold", color = "#4b5320"),
+    plot.subtitle = element_text(hjust = 0.5, size = 13, color = "#666666", margin = margin(b = 15)),
+    plot.caption = element_text(hjust = 1, size = 10, color = "#999999"),
+    legend.position = "right",
+    legend.title = element_text(size = 12, face = "bold", color = "#4b5320"),
+    legend.text = element_text(size = 11),
+    legend.key.size = unit(1, "cm"),
+    plot.margin = margin(20, 20, 20, 20),
+    plot.background = element_rect(fill = "white", color = NA)
+  )
+
+print(map_plot)
+
+# Save the map
+ggsave("chiefs_birthplace_map_ggplot2.png", 
+       plot = map_plot, 
+       width = 14, 
+       height = 10, 
+       dpi = 300,
+       bg = "white")
+
+cat("\n✓ Map saved as: chiefs_birthplace_map_ggplot2.png\n")
+```
+
+## Alternative: Continuous Color Scale
+
+```{r continuous-map, fig.width=14, fig.height=10}
+# Create map with continuous gradient (like the forest area example)
+continuous_map <- ggplot(data = turkey_map_data) +
+  geom_sf(aes(fill = n_chiefs), color = "grey", size = 0.2) +
+  scale_fill_gradient2(
+    low = "greenyellow", 
+    mid = "#4b5320",
+    high = "#1a2410",
+    midpoint = 3,
+    limits = c(0, max(turkey_map_data$n_chiefs)),
+    name = "Number of\nChiefs"
+  ) +
+  coord_sf(xlim = c(26, 45), ylim = c(36, 42)) +
+  theme_void() +
+  labs(
+    title = "Distribution of Turkish Chiefs of Staff at Provincial Level",
+    subtitle = paste0("Total Number: ", sum(turkey_map_data$n_chiefs, na.rm = TRUE)),
+    caption = "Data Source: Turkish Wikipedia"
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 18, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5, size = 13),
+    plot.caption = element_text(hjust = 1, size = 10),
+    legend.position = "right",
+    plot.background = element_rect(fill = "white", color = NA)
+  )
+
+print(continuous_map)
+
+# Save
+ggsave("chiefs_birthplace_continuous.png", 
+       plot = continuous_map, 
+       width = 14, 
+       height = 10, 
+       dpi = 300,
+       bg = "white")
+```
+
+## Branch Distribution
+
+```{r branch-analysis}
+# Analyze by military branch
+branch_counts <- chiefs_data %>%
+  group_by(branch) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  arrange(desc(count))
+
+kable(branch_counts, caption = "Distribution by Military Branch")
+
+# Branch distribution by top provinces
+branch_by_province <- chiefs_data %>%
+  filter(in_turkey == TRUE) %>%
+  group_by(province, branch) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = branch, values_from = count, values_fill = 0) %>%
+  arrange(desc(rowSums(select(., -province))))
+
+kable(head(branch_by_province, 10), caption = "Branch Distribution in Top Provinces")
+```
+
+## Bar Chart Visualization
+
+```{r bar-chart, fig.width=10, fig.height=8}
+bar_plot <- ggplot(city_counts, aes(x = reorder(birthplace, count), y = count)) +
+  geom_bar(stat = "identity", fill = "#4b5320", color = "white", width = 0.8) +
+  geom_text(aes(label = count), hjust = -0.3, size = 4, color = "#4b5320") +
+  coord_flip() +
+  labs(
+    title = "Number of Chiefs of Staff by Birthplace",
+    subtitle = "Republic Era (1920-Present)",
+    x = "",
+    y = "Number of Chiefs"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold", color = "#4b5320"),
+    plot.subtitle = element_text(hjust = 0.5, size = 12, color = "#666666"),
+    axis.text = element_text(size = 11),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+print(bar_plot)
+
+ggsave("chiefs_birthplace_barchart_r.png", 
+       plot = bar_plot, 
+       width = 10, 
+       height = 8, 
+       dpi = 300,
+       bg = "white")
+```
+
+## Summary Statistics
+
+```{r summary}
+cat("\n========================================\n")
+cat("SUMMARY STATISTICS\n")
+cat("========================================\n\n")
+
+cat("Total Chiefs Analyzed:", nrow(chiefs_data), "\n")
+cat("Unique Birthplaces:", length(unique(chiefs_data$birthplace)), "\n")
+cat("Provinces Represented:", sum(turkey_map_data$n_chiefs > 0), "out of", nrow(turkey_map_data), "\n")
+cat("Top Province:", province_counts$province[1], "with", province_counts$n_chiefs[1], "chiefs\n")
+
+cat("\nRegional Analysis:\n")
+regional <- chiefs_data %>%
+  filter(!is.na(region)) %>%
+  group_by(region) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  arrange(desc(count))
+
+kable(regional, caption = "Distribution by Region")
+```
+
+## Conclusion
+
+This analysis visualizes the geographic distribution of Turkish military chiefs' birthplaces using actual province boundaries and `geom_polygon()` rendering via ggplot2's `geom_sf()`. The choropleth maps clearly show:
+
+1. **Istanbul** dominates with the highest number of chiefs (8)
+2. **Ankara** follows with 5 chiefs
+3. Eastern Anatolia shows significant representation
+4. The military green gradient effectively highlights the concentration patterns
+
+The approach mirrors the forest area visualization technique - coloring entire administrative regions based on a quantitative variable, providing an intuitive geographic understanding of the data.
+
+---
+
+*Generated with R Markdown • Data from Turkish Wikipedia*
