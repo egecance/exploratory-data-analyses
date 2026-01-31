@@ -122,17 +122,17 @@ for city_info in all_major_cities:
     count = city_counts.get(city_name, 0)
     color = get_military_green(count)
     
-    # Determine radius based on count
+    # Determine radius based on count - much larger for area effect
     if count >= 5:
-        radius = 35000  # meters
+        radius = 50000  # meters
     elif count >= 3:
-        radius = 28000
+        radius = 40000
     elif count >= 2:
-        radius = 22000
+        radius = 32000
     elif count >= 1:
-        radius = 18000
+        radius = 25000
     else:
-        radius = 15000  # Grey cities
+        radius = 20000  # Grey cities
     
     # Create popup
     if count > 0:
@@ -168,7 +168,7 @@ for city_info in all_major_cities:
         </div>
         """
     
-    # Draw city circle
+    # Draw city area - no border, high opacity for filled area effect
     folium.Circle(
         location=[city_info['lat'], city_info['lon']],
         radius=radius,
@@ -176,9 +176,9 @@ for city_info in all_major_cities:
         color=color,
         fill=True,
         fillColor=color,
-        fillOpacity=0.6,
-        weight=2,
-        opacity=0.8
+        fillOpacity=0.85,
+        weight=0,  # No border
+        opacity=0
     ).add_to(m)
 
 # Add legend
