@@ -1,23 +1,23 @@
 name,birthplace,start_year,end_year,status,url
-Zeki Doğan,İstanbul,1944,1950,found,https://tr.wikipedia.org/wiki/Zeki_Doğan
-Muzaffer Göksenin,Manastır,1950,1953,found,https://tr.wikipedia.org/wiki/Muzaffer_Göksenin
+Zeki Doğan,,1944,1950,not_found,https://tr.wikipedia.org/wiki/Zeki_Doğan
+Muzaffer Göksenin,,1950,1953,not_found,https://tr.wikipedia.org/wiki/Muzaffer_Göksenin
 Fevzi Uçaner,Osmanlı İmparatorluğu,1953,1957,found,https://tr.wikipedia.org/wiki/Fevzi_Uçaner
-Hamdullah Suphi Göker,İstanbul,1957,1959,found,https://tr.wikipedia.org/wiki/Hamdullah_Suphi_Göker
+Hamdullah Suphi Göker,,1957,1959,not_found,https://tr.wikipedia.org/wiki/Hamdullah_Suphi_Göker
 Tekin Arıburun,Osmanlı İmparatorluğu,1959,1960,found,https://tr.wikipedia.org/wiki/Tekin_Arıburun
-İhsan Orgun,İstanbul,1960,1960,found,https://tr.wikipedia.org/wiki/İhsan_Orgun
-İrfan Tansel,İstanbul,1960,1961,found,https://tr.wikipedia.org/wiki/İrfan_Tansel
-Süleyman Tulgan,Bursa,1961,1961,found,https://tr.wikipedia.org/wiki/Süleyman_Tulgan
-İrfan Tansel,İstanbul,1961,1968,found,https://tr.wikipedia.org/wiki/İrfan_Tansel
-Reşat Mater,Üsküp,1968,1969,found,https://tr.wikipedia.org/wiki/Reşat_Mater
+İhsan Orgun,,1960,1960,not_found,https://tr.wikipedia.org/wiki/İhsan_Orgun
+İrfan Tansel,,1960,1961,not_found,https://tr.wikipedia.org/wiki/İrfan_Tansel
+Süleyman Tulgan,,1961,1961,not_found,https://tr.wikipedia.org/wiki/Süleyman_Tulgan
+İrfan Tansel,,1961,1968,not_found,https://tr.wikipedia.org/wiki/İrfan_Tansel
+Reşat Mater,,1968,1969,not_found,https://tr.wikipedia.org/wiki/Reşat_Mater
 Muhsin Batur,İstanbul,1969,1973,found,https://tr.wikipedia.org/wiki/Muhsin_Batur
-Emin Alpkaya,Niğde,1973,1976,found,https://tr.wikipedia.org/wiki/Emin_Alpkaya
+Emin Alpkaya,,1973,1976,not_found,https://tr.wikipedia.org/wiki/Emin_Alpkaya
 Cemal Engin,Osmanlı İmparatorluğu,1976,1976,found,https://tr.wikipedia.org/wiki/Cemal_Engin
 Ethem Ayan,Denizli,1976,1978,found,https://tr.wikipedia.org/wiki/Ethem_Ayan
 Tahsin Şahinkaya,Amasya,1978,1983,found,https://tr.wikipedia.org/wiki/Tahsin_Şahinkaya
 Halil Sözer,Bursa,1983,1986,found,https://tr.wikipedia.org/wiki/Halil_Sözer
 Cemil Çuha,Erzincan,1986,1988,found,https://tr.wikipedia.org/wiki/Cemil_Çuha
 Saftar Necioğlu,,1988,1990,not_found,https://tr.wikipedia.org/wiki/Saftar_Necioğlu
-Siyami Taştan,Erzurum,1990,1992,found,https://tr.wikipedia.org/wiki/Siyami_Taştan
+Siyami Taştan,,1990,1992,not_found,https://tr.wikipedia.org/wiki/Siyami_Taştan
 Halis Burhan,Trabzon,1992,1995,found,https://tr.wikipedia.org/wiki/Halis_Burhan
 Ahmet Çörekçi,Çorum,1995,1997,found,https://tr.wikipedia.org/wiki/Ahmet_Çörekçi
 İlhan Kılıç,Türkiye,1997,1999,found,https://tr.wikipedia.org/wiki/İlhan_Kılıç
