@@ -102,6 +102,26 @@ provinces_with_commanders <- all_provinces %>%
 cat("Total provinces/regions:", nrow(provinces_with_commanders), "\n")
 cat("Total commanders mapped:", sum(provinces_with_commanders$count, na.rm = TRUE), "\n\n")
 
+# Create key city labels
+library(dplyr)
+city_coords <- read.csv("data/army_city_coordinates.csv", stringsAsFactors = FALSE)
+
+# Count commanders per city
+city_counts <- army_data %>%
+  group_by(birthplace) %>%
+  summarise(count = n(), .groups = "drop")
+
+key_cities <- city_coords %>%
+  filter(city %in% c("İstanbul", "Selanik", "Rahova", "Ankara", "Erzurum")) %>%
+  left_join(city_counts, by = c("city" = "birthplace")) %>%
+  mutate(
+    count = replace_na(count, 0),
+    label_text = paste0("<b>", city, "</b><br/>", count, " Commander(s)")
+  )
+
+cat("Key cities for labels:\n")
+print(key_cities[c("city", "latitude", "longitude", "count")])
+
 # Create color palette
 pal <- colorBin(
   palette = c("#e8e8e8", "#a8b88f", "#8a9e6f", "#6c8450", "#4d6a30", "#2d3a1a"),
@@ -125,7 +145,6 @@ provinces_with_commanders <- provinces_with_commanders %>%
 # Create interactive map
 cat("Creating interactive leaflet map...\n")
 map <- leaflet(provinces_with_commanders) %>%
-  addProviderTiles(providers$CartoDB.Positron) %>%
   addPolygons(
     fillColor = ~pal(count),
     weight = 1,
@@ -146,6 +165,35 @@ map <- leaflet(provinces_with_commanders) %>%
     opacity = 0.7,
     title = "Number of<br/>Army<br/>Commanders",
     position = "bottomright"
+  ) %>%
+  addCircleMarkers(
+    data = key_cities,
+    lng = ~longitude,
+    lat = ~latitude,
+    radius = 3,
+    color = "#8B0000",
+    fillColor = "#FF0000",
+    fillOpacity = 0.8,
+    weight = 2,
+    popup = ~label_text
+  ) %>%
+  addLabelOnlyMarkers(
+    data = key_cities,
+    lng = ~longitude,
+    lat = ~latitude,
+    label = ~city,
+    labelOptions = labelOptions(
+      noHide = TRUE,
+      direction = "top",
+      textOnly = TRUE,
+      style = list(
+        "color" = "#8B0000",
+        "font-family" = "sans-serif",
+        "font-weight" = "bold",
+        "font-size" = "12px",
+        "text-shadow" = "1px 1px 2px white, -1px -1px 2px white, 1px -1px 2px white, -1px 1px 2px white"
+      )
+    )
   ) %>%
   setView(lng = 32.5, lat = 39, zoom = 5)
 
