@@ -31,16 +31,16 @@ cat("Unique Birthplaces:", length(unique(chiefs_data$birthplace)), "\n\n")
 city_to_province <- tibble(
   city = c("İstanbul", "Ankara", "Selanik", "Edirne", "Erzurum", "Trabzon", 
            "Erzincan", "İzmir", "Alaşehir", "Burdur", "Elazığ", 
-           "Afyonkarahisar", "Kastamonu", "Van"),
+           "Afyonkarahisar", "Kastamonu", "Kayseri", "Rahova"),
   province = c("Istanbul", "Ankara", "Thessaloniki", "Edirne", "Erzurum", "Trabzon",
                "Erzincan", "Izmir", "Manisa", "Burdur", "Elazig",
-               "Afyonkarahisar", "Kastamonu", "Van"),
+               "Afyonkarahisar", "Kastamonu", "Kayseri", "Olt"),
   country = c("Turkey", "Turkey", "Greece", "Turkey", "Turkey", "Turkey",
               "Turkey", "Turkey", "Turkey", "Turkey", "Turkey",
-              "Turkey", "Turkey", "Turkey"),
+              "Turkey", "Turkey", "Turkey", "Romania"),
   in_turkey = c(TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, 
                 TRUE, TRUE, TRUE, TRUE, TRUE, 
-                TRUE, TRUE, TRUE)
+                TRUE, TRUE, TRUE, FALSE)
 )
 
 # Add province mapping and count (including all chiefs now)
@@ -77,17 +77,31 @@ greece_provinces <- ne_states(country = "greece", returnclass = "sf")
 greece_provinces$country <- "Greece"
 cat("Loaded", nrow(greece_provinces), "Greek provinces\n")
 
-# Download neighboring countries (for context)
-cat("Downloading neighboring countries...\n")
-neighbors <- c("Bulgaria", "Georgia", "Armenia", "Azerbaijan", "Iran", "Iraq", "Syria")
-neighbor_countries <- ne_countries(country = neighbors, scale = "medium", returnclass = "sf")
-neighbor_countries$country <- neighbor_countries$admin
-cat("Loaded", nrow(neighbor_countries), "neighboring countries\n")
+# Download Bulgaria provinces
+cat("Downloading Bulgaria province boundaries...\n")
+bulgaria_provinces <- ne_states(country = "bulgaria", returnclass = "sf")
+bulgaria_provinces$country <- "Bulgaria"
+cat("Loaded", nrow(bulgaria_provinces), "Bulgarian provinces\n")
 
-# Combine all provinces
+# Download North Macedonia provinces
+cat("Downloading North Macedonia province boundaries...\n")
+macedonia_provinces <- ne_states(country = "macedonia", returnclass = "sf")
+macedonia_provinces$country <- "North Macedonia"
+cat("Loaded", nrow(macedonia_provinces), "North Macedonian provinces\n")
+
+# Download Romania provinces (for Rahova)
+cat("Downloading Romania province boundaries...\n")
+romania_provinces <- ne_states(country = "romania", returnclass = "sf")
+romania_provinces$country <- "Romania"
+cat("Loaded", nrow(romania_provinces), "Romanian provinces\n")
+
+# Combine Turkey, Greece, Bulgaria, North Macedonia, and Romania provinces
 all_provinces <- bind_rows(
   turkey_provinces,
-  greece_provinces
+  greece_provinces,
+  bulgaria_provinces,
+  macedonia_provinces,
+  romania_provinces
 )
 # Prepare all provinces for merging
 # The name column might have different encoding
@@ -108,9 +122,11 @@ all_provinces <- all_provinces %>%
       grepl("Elaz", name, ignore.case = TRUE) ~ "Elazig",
       grepl("Afyon", name, ignore.case = TRUE) ~ "Afyonkarahisar",
       grepl("Kastamonu", name, ignore.case = TRUE) ~ "Kastamonu",
-      grepl("Van", name, ignore.case = TRUE) ~ "Van",
+      grepl("Kayseri", name, ignore.case = TRUE) ~ "Kayseri",
       # Thessaloniki is in Central Macedonia (Kentriki Makedonia)
       grepl("Kentriki Makedonia|Central Macedonia", name, ignore.case = TRUE) ~ "Thessaloniki",
+      # Rahova is in Olt county, Romania
+      grepl("Olt", name, ignore.case = TRUE) ~ "Olt",
       TRUE ~ name
     )
   )
@@ -142,6 +158,7 @@ cat("Provinces with chiefs:", sum(map_data$n_chiefs > 0), "\n")
 cat("Total chiefs mapped:", sum(map_data$n_chiefs, na.rm = TRUE), "\n")
 cat("Turkey:", sum(map_data$n_chiefs[map_data$country == "Turkey"], na.rm = TRUE), "chiefs\n")
 cat("Greece:", sum(map_data$n_chiefs[map_data$country == "Greece"], na.rm = TRUE), "chiefs\n")
+cat("Romania:", sum(map_data$n_chiefs[map_data$country == "Romania"], na.rm = TRUE), "chiefs\n")
 
 # Military green palette
 military_green_palette <- c(
@@ -154,23 +171,21 @@ military_green_palette <- c(
 )
 
 # Create choropleth map
-cat("\nCreating choropleth map with neighboring countries...\n")
+cat("\nCreating choropleth map...\n")
 
 map_plot <- ggplot() +
-  # Base layer: neighboring countries (light grey)
-  geom_sf(data = neighbor_countries, fill = "#f0f0f0", color = "#cccccc", size = 0.3) +
   # Province layer: colored by number of chiefs
   geom_sf(data = map_data, aes(fill = chiefs_category), color = "white", size = 0.3) +
   scale_fill_manual(
     values = military_green_palette,
-    name = "Number of\nChiefs of Staff",
+    name = "Number of\nChief(s) of\nGeneral Staff",
     drop = FALSE
   ) +
-  coord_sf(xlim = c(19, 45), ylim = c(35, 43), expand = FALSE) +
+  coord_sf(xlim = c(20, 45), ylim = c(35, 47), expand = FALSE) +
   theme_void() +
   labs(
-    title = "Turkish Chiefs of Staff - Birthplace Distribution",
-    subtitle = paste0("Republic Era (1920-Present) • Total: ", sum(map_data$n_chiefs, na.rm = TRUE), " Chiefs (incl. 3 from Thessaloniki, Greece)"),
+    title = "Turkish Chief(s) of General Staff - Birthplace Distribution",
+    subtitle = paste0("Republic Era (1920-Present) • Total: ", sum(map_data$n_chiefs, na.rm = TRUE), " Chiefs (4 from Thessaloniki/Greece, 1 from Rahova/Romania)"),
     caption = "Data: Turkish Wikipedia • Map: Natural Earth • Visualization: R/ggplot2 choropleth"
   ) +
   theme(
