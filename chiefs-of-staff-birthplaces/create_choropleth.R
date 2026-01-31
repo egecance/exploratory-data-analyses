@@ -185,7 +185,7 @@ map_plot <- ggplot() +
   theme_void() +
   labs(
     title = "Turkish Chief(s) of General Staff - Birthplace Distribution",
-    subtitle = paste0("Republic Era (1920-Present) • Total: ", sum(map_data$n_chiefs, na.rm = TRUE), " Chiefs (4 from Thessaloniki/Greece, 1 from Rahova/Romania)"),
+    subtitle = paste0("Republic Era (1923-Present) • Total: ", sum(map_data$n_chiefs, na.rm = TRUE), " Chiefs (4 from Thessaloniki/Greece, 1 from Rahova/Romania)"),
     caption = "Data: Turkish Wikipedia • Map: Natural Earth • Visualization: R/ggplot2 choropleth"
   ) +
   theme(
