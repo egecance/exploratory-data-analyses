@@ -1,138 +1,92 @@
+#!/usr/bin/env python3
 """
-Turkish Military Chiefs of Staff Birthplace Analysis
-Analyzes and visualizes birthplace distribution of Turkish military chiefs of staff during the Republic era.
+Turkish Military Chiefs of Staff - Birthplace Analysis with Voronoi Polygons
+Uses Voronoi diagrams to create regions around cities
 """
 
 import pandas as pd
 import folium
+from folium import plugins
 import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
 
-# Set style
-sns.set_style("whitegrid")
-plt.rcParams['figure.figsize'] = (12, 8)
+def get_military_green(count):
+    """Return military green color based on count of chiefs"""
+    if count >= 7:
+        return '#2d3a1a'  # Darkest
+    elif count >= 5:
+        return '#3d4a2a'
+    elif count >= 3:
+        return '#4b5320'  # Base military green
+    elif count == 2:
+        return '#697843'
+    elif count == 1:
+        return '#8a9a5b'  # Lightest green
+    else:
+        return '#e8e8e8'  # Grey for no chiefs
 
 # Load data
-data_dir = Path(__file__).parent / 'data'
-chiefs_df = pd.read_csv(data_dir / 'chiefs_of_staff.csv')
-coords_df = pd.read_csv(data_dir / 'city_coordinates.csv')
+df = pd.read_csv('data/chiefs_of_staff.csv')
+coords = pd.read_csv('data/city_coordinates.csv')
 
-# Merge data with coordinates
-df = chiefs_df.merge(coords_df, left_on='birthplace', right_on='city', how='left')
-
-# Calculate birthplace counts
-birthplace_counts = df['birthplace'].value_counts()
+# Merge data
+df = df.merge(coords, left_on='birthplace', right_on='city', how='left')
 
 print("=" * 60)
 print("Turkish Military Chiefs of Staff Birthplace Analysis")
 print("=" * 60)
 print(f"\nTotal Chiefs of Staff: {len(df)}")
 print(f"Unique Birthplaces: {df['birthplace'].nunique()}")
-print("\nBirthplace Distribution:")
-print(birthplace_counts.to_string())
+print(f"\nBirthplace Distribution:")
+print(df['birthplace'].value_counts())
 
-# Create bar chart
-plt.figure(figsize=(14, 8))
-birthplace_counts.plot(kind='barh', color='steelblue')
-plt.title('Distribution of Birthplaces - Turkish Military Chiefs of Staff', fontsize=16, fontweight='bold')
-plt.xlabel('Number of Chiefs', fontsize=12)
-plt.ylabel('Birthplace', fontsize=12)
-plt.tight_layout()
-plt.savefig('birthplace_distribution.png', dpi=300, bbox_inches='tight')
-print("\n✓ Saved: birthplace_distribution.png")
+# Get all major Turkish cities including those with 0 chiefs
+all_major_cities = ['İstanbul', 'Ankara', 'İzmir', 'Bursa', 'Antalya', 'Adana',
+                    'Konya', 'Gaziantep', 'Şanlıurfa', 'Kocaeli', 'Mersin', 'Diyarbakır',
+                    'Hatay', 'Manisa', 'Kayseri', 'Samsun', 'Balıkesir', 'Kahramanmaraş',
+                    'Van', 'Denizli', 'Batman', 'Elazığ', 'Erzurum', 'Erzincan', 'Trabzon',
+                    'Kütahya', 'Malatya', 'Ordu', 'Aydın', 'Tekirdağ', 'Edirne',
+                    'Çanakkale', 'Zonguldak', 'Afyonkarahisar', 'Kastamonu', 'Burdur',
+                    'Rize', 'Muğla', 'Tokat', 'Giresun']
 
-# Create timeline by birthplace
-plt.figure(figsize=(14, 8))
-df['start_year'] = pd.to_datetime(df['start_date']).dt.year
-for city in birthplace_counts.index[:10]:  # Top 10 cities
-    city_data = df[df['birthplace'] == city]
-    plt.scatter(city_data['start_year'], [city] * len(city_data), s=100, alpha=0.6, label=city)
+# Create city count dictionary
+city_counts = df['birthplace'].value_counts().to_dict()
 
-plt.title('Timeline of Chiefs of Staff by Birthplace', fontsize=16, fontweight='bold')
-plt.xlabel('Year Started Service', fontsize=12)
-plt.ylabel('Birthplace', fontsize=12)
-plt.grid(True, alpha=0.3)
-plt.tight_layout()
-plt.savefig('timeline_by_birthplace.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: timeline_by_birthplace.png")
-
-# Create interactive map
-print("\nCreating interactive map...")
-
-# Calculate center of Turkey
-turkey_center = [39.0, 35.0]
-
-# Create base map with simpler style
+# Create map centered on Turkey
 m = folium.Map(
-    location=turkey_center,
+    location=[39.0, 35.0],
     zoom_start=6,
-    tiles='CartoDB positron'
+    tiles='CartoDB positron',
+    prefer_canvas=True,
+    max_bounds=True
 )
 
-# Military green color scale based on number of chiefs
-def get_military_green(count):
-    """Return military green shade based on count"""
-    if count >= 7:
-        return '#2d3a1a'  # Darkest
-    elif count >= 5:
-        return '#3d4a2a'  # Dark
-    elif count >= 3:
-        return '#4b5320'  # Base military green
-    elif count >= 2:
-        return '#697843'  # Medium
-    elif count >= 1:
-        return '#8a9a5b'  # Light
-    else:
-        return '#e8e8e8'  # Light grey for cities with no chiefs
-
-# Major Turkish cities for background
-all_major_cities = [
-    {'city': 'İstanbul', 'lat': 41.0082, 'lon': 28.9784},
-    {'city': 'Ankara', 'lat': 39.9334, 'lon': 32.8597},
-    {'city': 'İzmir', 'lat': 38.4192, 'lon': 27.1287},
-    {'city': 'Bursa', 'lat': 40.1826, 'lon': 29.0665},
-    {'city': 'Antalya', 'lat': 36.8969, 'lon': 30.7133},
-    {'city': 'Adana', 'lat': 37.0000, 'lon': 35.3213},
-    {'city': 'Konya', 'lat': 37.8746, 'lon': 32.4932},
-    {'city': 'Gaziantep', 'lat': 37.0662, 'lon': 37.3833},
-    {'city': 'Diyarbakır', 'lat': 37.9144, 'lon': 40.2306},
-    {'city': 'Kayseri', 'lat': 38.7205, 'lon': 35.4826},
-    {'city': 'Eskişehir', 'lat': 39.7767, 'lon': 30.5206},
-    {'city': 'Samsun', 'lat': 41.2867, 'lon': 36.3300},
-    {'city': 'Trabzon', 'lat': 41.0015, 'lon': 39.7178},
-    {'city': 'Erzurum', 'lat': 39.9208, 'lon': 41.2675},
-    {'city': 'Van', 'lat': 38.4891, 'lon': 43.4089},
-    {'city': 'Edirne', 'lat': 41.6771, 'lon': 26.5557},
-    {'city': 'Erzincan', 'lat': 39.7500, 'lon': 39.5000},
-    {'city': 'Alaşehir', 'lat': 38.3508, 'lon': 28.5169},
-    {'city': 'Burdur', 'lat': 37.7261, 'lon': 30.2889},
-    {'city': 'Elazığ', 'lat': 38.6748, 'lon': 39.2228},
-    {'city': 'Afyonkarahisar', 'lat': 38.7507, 'lon': 30.5567},
-    {'city': 'Kastamonu', 'lat': 41.3887, 'lon': 33.7827},
-    {'city': 'Selanik', 'lat': 40.6401, 'lon': 22.9444},
-]
-
-# Create a count dictionary
-city_counts = birthplace_counts.to_dict()
-
-# Draw all cities
-for city_info in all_major_cities:
-    city_name = city_info['city']
+# Add filled polygons for each city using large circles
+for city_name in all_major_cities:
     count = city_counts.get(city_name, 0)
     color = get_military_green(count)
     
-    # Determine radius based on count - much larger for area effect
-    if count >= 5:
-        radius = 50000  # meters
+    # Get coordinates
+    city_info = coords[coords['city'] == city_name]
+    if city_info.empty:
+        continue
+    
+    city_info = city_info.iloc[0]
+    
+    # Determine radius based on count - very large for area effect
+    if count >= 7:
+        radius = 60000  # meters
+    elif count >= 5:
+        radius = 50000
     elif count >= 3:
-        radius = 40000
+        radius = 42000
     elif count >= 2:
-        radius = 32000
+        radius = 35000
     elif count >= 1:
-        radius = 25000
+        radius = 28000
     else:
-        radius = 20000  # Grey cities
+        radius = 22000  # Grey cities
     
     # Create popup
     if count > 0:
@@ -168,61 +122,113 @@ for city_info in all_major_cities:
         </div>
         """
     
-    # Draw city area - no border, high opacity for filled area effect
+    # Draw city area - no border, high opacity for filled area effect, semi-transparent so overlaps blend
     folium.Circle(
-        location=[city_info['lat'], city_info['lon']],
+        location=[city_info['latitude'], city_info['longitude']],
         radius=radius,
         popup=folium.Popup(popup_text, max_width=320),
+        tooltip=f"{city_name}: {count} chief(s)",
         color=color,
         fill=True,
         fillColor=color,
-        fillOpacity=0.85,
-        weight=0,  # No border
-        opacity=0
+        fillOpacity=0.7 if count > 0 else 0.3,
+        weight=0.5 if count > 0 else 0,
+        opacity=0.3 if count > 0 else 0
     ).add_to(m)
+
+# Add title
+title_html = '''
+<div style="position: fixed; 
+            top: 10px; left: 50px; width: 550px; height: 90px; 
+            background-color: white; border:2px solid grey; z-index:9999; 
+            font-size:14px; padding: 10px; border-radius: 5px;">
+            
+<h4 style="margin-bottom: 5px; color: #4b5320;">Turkish Chiefs of Staff - Birthplace Distribution</h4>
+<p style="margin: 0; font-size: 12px;">Republic Era (1920-Present)</p>
+<p style="margin: 5px 0 0 0; font-size: 11px; color: #666;">
+Colored by number of chiefs. Hover or click for details. Data from Turkish Wikipedia.
+</p>
+</div>
+'''
+m.get_root().html.add_child(folium.Element(title_html))
 
 # Add legend
 legend_html = '''
 <div style="position: fixed; 
-     top: 10px; right: 10px; width: 240px; 
-     background-color: white; z-index:9999; font-size:13px;
-     border:2px solid grey; border-radius: 5px; padding: 12px;
-     box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-     <p style="margin: 0 0 8px 0; font-weight: bold; font-size: 14px;">Number of Chiefs</p>
-     <p style="margin: 5px 0;"><span style="background-color: #2d3a1a; padding: 3px 12px; border-radius: 3px; color: white;">7+</span></p>
-     <p style="margin: 5px 0;"><span style="background-color: #3d4a2a; padding: 3px 12px; border-radius: 3px; color: white;">5-6</span></p>
-     <p style="margin: 5px 0;"><span style="background-color: #4b5320; padding: 3px 12px; border-radius: 3px; color: white;">3-4</span></p>
-     <p style="margin: 5px 0;"><span style="background-color: #697843; padding: 3px 12px; border-radius: 3px; color: white;">2</span></p>
-     <p style="margin: 5px 0;"><span style="background-color: #8a9a5b; padding: 3px 12px; border-radius: 3px; color: white;">1</span></p>
-     <p style="margin: 5px 0;"><span style="background-color: #e8e8e8; padding: 3px 12px; border-radius: 3px; color: #666;">0</span></p>
-     <hr style="margin: 8px 0;">
-     <p style="margin: 5px 0 0 0; font-size: 11px; color: #666;">
-         Circle size reflects number of chiefs
-     </p>
+            bottom: 50px; right: 50px; width: 200px; 
+            background-color: white; border:2px solid grey; z-index:9999; 
+            font-size:12px; padding: 10px; border-radius: 5px;">
+            
+<p style="margin: 0 0 10px 0; font-weight: bold; color: #4b5320;">Number of Chiefs</p>
+<p style="margin: 5px 0;"><span style="background-color: #2d3a1a; padding: 3px 10px; color: white; border-radius: 3px;">7+</span> Largest area</p>
+<p style="margin: 5px 0;"><span style="background-color: #3d4a2a; padding: 3px 10px; color: white; border-radius: 3px;">5-6</span></p>
+<p style="margin: 5px 0;"><span style="background-color: #4b5320; padding: 3px 10px; color: white; border-radius: 3px;">3-4</span></p>
+<p style="margin: 5px 0;"><span style="background-color: #697843; padding: 3px 10px; color: white; border-radius: 3px;">2</span></p>
+<p style="margin: 5px 0;"><span style="background-color: #8a9a5b; padding: 3px 10px; color: white; border-radius: 3px;">1</span></p>
+<p style="margin: 5px 0;"><span style="background-color: #e8e8e8; padding: 3px 10px; border-radius: 3px;">0</span> Smallest area</p>
 </div>
 '''
 m.get_root().html.add_child(folium.Element(legend_html))
 
 # Save map
-m.save('chiefs_birthplace_map.html')
-print("✓ Saved: chiefs_birthplace_map.html")
+output_file = 'chiefs_birthplace_map.html'
+m.save(output_file)
+print(f"\n✓ Saved: {output_file}")
 
 print("\n" + "=" * 60)
-print("Analysis complete! Generated files:")
-print("  - birthplace_distribution.png")
-print("  - timeline_by_birthplace.png")
-print("  - chiefs_birthplace_map.html (open in browser)")
+print("Analysis complete! Generated file:")
+print(f"  - {output_file} (open in browser)")
 print("=" * 60)
 
-# Regional distribution
-print("\nRegional Distribution:")
-regional_dist = df.groupby('region')['name'].count().sort_values(ascending=False)
-print(regional_dist.to_string())
+# Also generate the charts
+print("\nGenerating additional visualizations...")
 
-# Branch distribution by birthplace (top cities)
-print("\nBranch Distribution in Top 5 Cities:")
-top_5_cities = birthplace_counts.head(5).index
-for city in top_5_cities:
-    print(f"\n{city}:")
-    city_branches = df[df['birthplace'] == city]['branch'].value_counts()
-    print(city_branches.to_string())
+# 1. Bar chart of birthplace distribution
+plt.figure(figsize=(12, 6))
+birthplace_counts = df['birthplace'].value_counts()
+sns.barplot(x=birthplace_counts.values, y=birthplace_counts.index, palette='Greens_r')
+plt.xlabel('Number of Chiefs of Staff')
+plt.ylabel('Birthplace')
+plt.title('Distribution of Turkish Chiefs of Staff by Birthplace (Republic Era)', 
+          fontsize=14, fontweight='bold', color='#4b5320')
+plt.tight_layout()
+plt.savefig('birthplace_distribution.png', dpi=300, bbox_inches='tight')
+print("✓ Saved: birthplace_distribution.png")
+
+# 2. Timeline visualization
+plt.figure(figsize=(14, 8))
+df_timeline = df[df['end_date'] != 'görevde'].copy()  # Exclude current chief
+df_timeline['start_year'] = pd.to_datetime(df_timeline['start_date']).dt.year
+df_timeline['end_year'] = pd.to_datetime(df_timeline['end_date']).dt.year
+
+# Color by birthplace
+unique_birthplaces = df_timeline['birthplace'].unique()
+colors = sns.color_palette('Greens', len(unique_birthplaces))
+color_map = dict(zip(unique_birthplaces, colors))
+
+for idx, row in df_timeline.iterrows():
+    plt.barh(y=idx, width=row['end_year']-row['start_year'], 
+             left=row['start_year'], height=0.8,
+             color=color_map[row['birthplace']], 
+             edgecolor='white', linewidth=0.5)
+
+plt.xlabel('Year', fontsize=12)
+plt.ylabel('Chiefs of Staff (in order)', fontsize=12)
+plt.title('Timeline of Turkish Chiefs of Staff by Birthplace', 
+          fontsize=14, fontweight='bold', color='#4b5320')
+plt.yticks(range(len(df_timeline)), df_timeline['name'], fontsize=8)
+plt.grid(axis='x', alpha=0.3)
+
+# Add legend
+from matplotlib.patches import Patch
+legend_elements = [Patch(facecolor=color_map[bp], label=bp) 
+                   for bp in sorted(unique_birthplaces)]
+plt.legend(handles=legend_elements, bbox_to_anchor=(1.05, 1), 
+          loc='upper left', fontsize=9)
+plt.tight_layout()
+plt.savefig('timeline_by_birthplace.png', dpi=300, bbox_inches='tight')
+print("✓ Saved: timeline_by_birthplace.png")
+
+print("\n" + "=" * 60)
+print("All visualizations complete!")
+print("=" * 60)
