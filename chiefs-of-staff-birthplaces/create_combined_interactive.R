@@ -723,7 +723,7 @@ map <- map %>%
   )
 
 message("Saving combined interactive map...")
-saveWidget(map, "combined_birthplace_interactive.html", selfcontained = TRUE)
+saveWidget(map, "docs/commanders-map.html", selfcontained = TRUE)
 
 message("\n============================================================")
 message("Combined interactive map complete!")
