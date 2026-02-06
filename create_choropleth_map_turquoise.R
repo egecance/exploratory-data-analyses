@@ -181,10 +181,10 @@ turkey$count[is.na(turkey$count)] <- 0
 
 # Define turquoise color palette with consistent intervals
 # Base turquoise: #77dde7 (119, 221, 231)
-# Light grey for 0, then darker turquoise shades (2 levels darker)
+# Light grey for 0, then darker turquoise shades with much darker shade for highest bin
 pal <- colorBin(
   palette = c("#999999", "#A8E4EB", "#77dde7", "#5BC4D1", "#3FA9B8", 
-              "#2A8C9A", "#1F6B74", "#145059"),
+              "#2A8C9A", "#1F6B74", "#0A3038"),
   bins = c(0, 1, 6, 11, 16, 21, 26, 31, 110),
   na.color = "#999999"
 )
