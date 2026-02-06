@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_02afac68ad86b94393970045a1ba1b1b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                top: 10px; left: 50px; width: 400px; height: 50px; 
+                background-color: white; border:2px solid grey; z-index:9999; 
+                font-size:16px; font-weight: bold; padding: 10px">
+    Turkish Officials Birthplaces (1920-2024)
+    </div>
+    
+    
+            <div class="folium-map" id="map_02afac68ad86b94393970045a1ba1b1b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_02afac68ad86b94393970045a1ba1b1b = L.map(
+                "map_02afac68ad86b94393970045a1ba1b1b",
+                {
+                    center: [39.0, 35.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_02afac68ad86b94393970045a1ba1b1b);
+
+            
+
+        
+    
+            var tile_layer_d17e7c045cefec9be5592ede6f0438c3 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d17e7c045cefec9be5592ede6f0438c3.addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+            var circle_e13aaceb4bac6749dc53e3aa8122f75c = L.circle(
+                [41.0082, 28.9784],
+                {"bubblingMouseEvents": true, "color": "#c8c8c8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c8c8c8", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 55000.0, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_4791f58e0f8e0fb3290ebe4ba0ceded8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0358f59df0c96cd9ce45974e51b0b2f3 = $(`<div id="html_0358f59df0c96cd9ce45974e51b0b2f3" style="width: 100.0%; height: 100.0%;"><b>İstanbul</b><br>102 officials</div>`)[0];
+                popup_4791f58e0f8e0fb3290ebe4ba0ceded8.setContent(html_0358f59df0c96cd9ce45974e51b0b2f3);
+            
+        
+
+        circle_e13aaceb4bac6749dc53e3aa8122f75c.bindPopup(popup_4791f58e0f8e0fb3290ebe4ba0ceded8)
+        ;
+
+        
+    
+    
+            circle_e13aaceb4bac6749dc53e3aa8122f75c.bindTooltip(
+                `<div>
+                     İstanbul: 102
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_01682546e26587a9783065b26eaa3979 = L.circle(
+                [39.9, 41.27],
+                {"bubblingMouseEvents": true, "color": "#4d7f4d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4d7f4d", "fillOpacity": 0.3931372549019608, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14313.725490196079, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_6e0d9631d6d07020b5ad724275db1289 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_03d120fb6c9e183dad36abb1c244db7b = $(`<div id="html_03d120fb6c9e183dad36abb1c244db7b" style="width: 100.0%; height: 100.0%;"><b>Erzurum</b><br>19 officials</div>`)[0];
+                popup_6e0d9631d6d07020b5ad724275db1289.setContent(html_03d120fb6c9e183dad36abb1c244db7b);
+            
+        
+
+        circle_01682546e26587a9783065b26eaa3979.bindPopup(popup_6e0d9631d6d07020b5ad724275db1289)
+        ;
+
+        
+    
+    
+            circle_01682546e26587a9783065b26eaa3979.bindTooltip(
+                `<div>
+                     Erzurum: 19
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_5405ad5429d8af29d9c22d0d9478b1de = L.circle(
+                [37.0, 35.3213],
+                {"bubblingMouseEvents": true, "color": "#396b39", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#396b39", "fillOpacity": 0.32450980392156864, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7450.980392156863, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_fab86ae1bf1a4ae5eca5c4b499010b31 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_63983a8fbc1dfea441d7993e1e8aeb79 = $(`<div id="html_63983a8fbc1dfea441d7993e1e8aeb79" style="width: 100.0%; height: 100.0%;"><b>Adana</b><br>5 officials</div>`)[0];
+                popup_fab86ae1bf1a4ae5eca5c4b499010b31.setContent(html_63983a8fbc1dfea441d7993e1e8aeb79);
+            
+        
+
+        circle_5405ad5429d8af29d9c22d0d9478b1de.bindPopup(popup_fab86ae1bf1a4ae5eca5c4b499010b31)
+        ;
+
+        
+    
+    
+            circle_5405ad5429d8af29d9c22d0d9478b1de.bindTooltip(
+                `<div>
+                     Adana: 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_c6e9aa050db561a7b7f3d6375aa8b207 = L.circle(
+                [40.1826, 29.0665],
+                {"bubblingMouseEvents": true, "color": "#457745", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#457745", "fillOpacity": 0.3637254901960784, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11372.549019607843, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_f5231f6dcbb33d9f9b8e6029af155189 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_49d07cca084faedd5c59987b5643cef7 = $(`<div id="html_49d07cca084faedd5c59987b5643cef7" style="width: 100.0%; height: 100.0%;"><b>Bursa</b><br>13 officials</div>`)[0];
+                popup_f5231f6dcbb33d9f9b8e6029af155189.setContent(html_49d07cca084faedd5c59987b5643cef7);
+            
+        
+
+        circle_c6e9aa050db561a7b7f3d6375aa8b207.bindPopup(popup_f5231f6dcbb33d9f9b8e6029af155189)
+        ;
+
+        
+    
+    
+            circle_c6e9aa050db561a7b7f3d6375aa8b207.bindTooltip(
+                `<div>
+                     Bursa: 13
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_83d82f68785c2443106b554962ddd2f5 = L.circle(
+                [38.6191, 27.4289],
+                {"bubblingMouseEvents": true, "color": "#396b39", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#396b39", "fillOpacity": 0.32450980392156864, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7450.980392156863, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_7ee5bf3bf1b744aac670dbfc60130f73 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e1fb81f630cddbafc606debf31b3f841 = $(`<div id="html_e1fb81f630cddbafc606debf31b3f841" style="width: 100.0%; height: 100.0%;"><b>Manisa</b><br>5 officials</div>`)[0];
+                popup_7ee5bf3bf1b744aac670dbfc60130f73.setContent(html_e1fb81f630cddbafc606debf31b3f841);
+            
+        
+
+        circle_83d82f68785c2443106b554962ddd2f5.bindPopup(popup_7ee5bf3bf1b744aac670dbfc60130f73)
+        ;
+
+        
+    
+    
+            circle_83d82f68785c2443106b554962ddd2f5.bindTooltip(
+                `<div>
+                     Manisa: 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_423e85b25089ad69957a29cdbea36235 = L.circle(
+                [37.856, 27.8416],
+                {"bubblingMouseEvents": true, "color": "#396b39", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#396b39", "fillOpacity": 0.32450980392156864, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7450.980392156863, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_1def5bdd12657fb46196a8911e87e898 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5ded59a58079edb8955a68c78cfac8aa = $(`<div id="html_5ded59a58079edb8955a68c78cfac8aa" style="width: 100.0%; height: 100.0%;"><b>Aydın</b><br>5 officials</div>`)[0];
+                popup_1def5bdd12657fb46196a8911e87e898.setContent(html_5ded59a58079edb8955a68c78cfac8aa);
+            
+        
+
+        circle_423e85b25089ad69957a29cdbea36235.bindPopup(popup_1def5bdd12657fb46196a8911e87e898)
+        ;
+
+        
+    
+    
+            circle_423e85b25089ad69957a29cdbea36235.bindTooltip(
+                `<div>
+                     Aydın: 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_35a1f82d4792f69600cb8477f2cf38b7 = L.circle(
+                [39.7477, 37.0179],
+                {"bubblingMouseEvents": true, "color": "#457745", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#457745", "fillOpacity": 0.3637254901960784, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11372.549019607843, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_15680b4caf2d28fea6db964a39ae6752 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1720327d1f4f490ac0f10216469dec82 = $(`<div id="html_1720327d1f4f490ac0f10216469dec82" style="width: 100.0%; height: 100.0%;"><b>Sivas</b><br>13 officials</div>`)[0];
+                popup_15680b4caf2d28fea6db964a39ae6752.setContent(html_1720327d1f4f490ac0f10216469dec82);
+            
+        
+
+        circle_35a1f82d4792f69600cb8477f2cf38b7.bindPopup(popup_15680b4caf2d28fea6db964a39ae6752)
+        ;
+
+        
+    
+    
+            circle_35a1f82d4792f69600cb8477f2cf38b7.bindTooltip(
+                `<div>
+                     Sivas: 13
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_a64396b338d53520bc67afaacea2b531 = L.circle(
+                [40.1553, 26.4142],
+                {"bubblingMouseEvents": true, "color": "#3d6f3d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3d6f3d", "fillOpacity": 0.3392156862745098, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8921.56862745098, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_d440679a12e41dedbff80851467583bd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_924a9ae9944da2b9f67ebe8dc6fef54a = $(`<div id="html_924a9ae9944da2b9f67ebe8dc6fef54a" style="width: 100.0%; height: 100.0%;"><b>Çanakkale</b><br>8 officials</div>`)[0];
+                popup_d440679a12e41dedbff80851467583bd.setContent(html_924a9ae9944da2b9f67ebe8dc6fef54a);
+            
+        
+
+        circle_a64396b338d53520bc67afaacea2b531.bindPopup(popup_d440679a12e41dedbff80851467583bd)
+        ;
+
+        
+    
+    
+            circle_a64396b338d53520bc67afaacea2b531.bindTooltip(
+                `<div>
+                     Çanakkale: 8
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_57041d34c997c6f1ac43796a8928cdc9 = L.circle(
+                [37.1759, 33.2287],
+                {"bubblingMouseEvents": true, "color": "#3d6f3d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3d6f3d", "fillOpacity": 0.3392156862745098, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8921.56862745098, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_f6d1614a3a35e38f7c707610aee4f968 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e91c18f50b6897c1829988966d5079f7 = $(`<div id="html_e91c18f50b6897c1829988966d5079f7" style="width: 100.0%; height: 100.0%;"><b>Karaman</b><br>8 officials</div>`)[0];
+                popup_f6d1614a3a35e38f7c707610aee4f968.setContent(html_e91c18f50b6897c1829988966d5079f7);
+            
+        
+
+        circle_57041d34c997c6f1ac43796a8928cdc9.bindPopup(popup_f6d1614a3a35e38f7c707610aee4f968)
+        ;
+
+        
+    
+    
+            circle_57041d34c997c6f1ac43796a8928cdc9.bindTooltip(
+                `<div>
+                     Karaman: 8
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_873f0c87b7b03261072969ae6fd69747 = L.circle(
+                [41.0201, 40.5234],
+                {"bubblingMouseEvents": true, "color": "#407240", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#407240", "fillOpacity": 0.34901960784313724, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9901.960784313726, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_a1919a4c9138c9770d3a557251e5645d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_351b751b4f1a0a856ecb1bf843f22fc3 = $(`<div id="html_351b751b4f1a0a856ecb1bf843f22fc3" style="width: 100.0%; height: 100.0%;"><b>Rize</b><br>10 officials</div>`)[0];
+                popup_a1919a4c9138c9770d3a557251e5645d.setContent(html_351b751b4f1a0a856ecb1bf843f22fc3);
+            
+        
+
+        circle_873f0c87b7b03261072969ae6fd69747.bindPopup(popup_a1919a4c9138c9770d3a557251e5645d)
+        ;
+
+        
+    
+    
+            circle_873f0c87b7b03261072969ae6fd69747.bindTooltip(
+                `<div>
+                     Rize: 10
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_31679e12ea4abfc061f3c639e906a7e5 = L.circle(
+                [37.9144, 40.2306],
+                {"bubblingMouseEvents": true, "color": "#3a6c3a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3a6c3a", "fillOpacity": 0.32941176470588235, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7941.176470588235, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_bc5d079923ae58020eebdfc6aad39ec3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a99fb9e2d98c2270d74d399b6996ac8c = $(`<div id="html_a99fb9e2d98c2270d74d399b6996ac8c" style="width: 100.0%; height: 100.0%;"><b>Diyarbakır</b><br>6 officials</div>`)[0];
+                popup_bc5d079923ae58020eebdfc6aad39ec3.setContent(html_a99fb9e2d98c2270d74d399b6996ac8c);
+            
+        
+
+        circle_31679e12ea4abfc061f3c639e906a7e5.bindPopup(popup_bc5d079923ae58020eebdfc6aad39ec3)
+        ;
+
+        
+    
+    
+            circle_31679e12ea4abfc061f3c639e906a7e5.bindTooltip(
+                `<div>
+                     Diyarbakır: 6
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_6193fe39f6f0b5f3802881efaa1d70f7 = L.circle(
+                [37.9667, 34.6833],
+                {"bubblingMouseEvents": true, "color": "#3a6c3a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3a6c3a", "fillOpacity": 0.32941176470588235, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7941.176470588235, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_7d419314bd0b984d210877fb49708922 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e840bcd7b24c6f4e5ea132e20666584c = $(`<div id="html_e840bcd7b24c6f4e5ea132e20666584c" style="width: 100.0%; height: 100.0%;"><b>Niğde</b><br>6 officials</div>`)[0];
+                popup_7d419314bd0b984d210877fb49708922.setContent(html_e840bcd7b24c6f4e5ea132e20666584c);
+            
+        
+
+        circle_6193fe39f6f0b5f3802881efaa1d70f7.bindPopup(popup_7d419314bd0b984d210877fb49708922)
+        ;
+
+        
+    
+    
+            circle_6193fe39f6f0b5f3802881efaa1d70f7.bindTooltip(
+                `<div>
+                     Niğde: 6
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_a9f22326d13d9a302582fa5fea0a32ae = L.circle(
+                [38.3552, 38.3095],
+                {"bubblingMouseEvents": true, "color": "#3a6c3a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3a6c3a", "fillOpacity": 0.32941176470588235, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7941.176470588235, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_fe0b48ffe385fd8662d216baa6176e4c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_447de220e0173a0d647c01c986167172 = $(`<div id="html_447de220e0173a0d647c01c986167172" style="width: 100.0%; height: 100.0%;"><b>Malatya</b><br>6 officials</div>`)[0];
+                popup_fe0b48ffe385fd8662d216baa6176e4c.setContent(html_447de220e0173a0d647c01c986167172);
+            
+        
+
+        circle_a9f22326d13d9a302582fa5fea0a32ae.bindPopup(popup_fe0b48ffe385fd8662d216baa6176e4c)
+        ;
+
+        
+    
+    
+            circle_a9f22326d13d9a302582fa5fea0a32ae.bindTooltip(
+                `<div>
+                     Malatya: 6
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_916b861f871f89f8382e5305d6b4c58a = L.circle(
+                [39.75, 39.49],
+                {"bubblingMouseEvents": true, "color": "#427442", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#427442", "fillOpacity": 0.35392156862745094, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10392.156862745098, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_03f3d6cb421d0d8ca3e256cdb9a4c22c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f206ff5d079ef2d2691c7365a85ec0d9 = $(`<div id="html_f206ff5d079ef2d2691c7365a85ec0d9" style="width: 100.0%; height: 100.0%;"><b>Erzincan</b><br>11 officials</div>`)[0];
+                popup_03f3d6cb421d0d8ca3e256cdb9a4c22c.setContent(html_f206ff5d079ef2d2691c7365a85ec0d9);
+            
+        
+
+        circle_916b861f871f89f8382e5305d6b4c58a.bindPopup(popup_03f3d6cb421d0d8ca3e256cdb9a4c22c)
+        ;
+
+        
+    
+    
+            circle_916b861f871f89f8382e5305d6b4c58a.bindTooltip(
+                `<div>
+                     Erzincan: 11
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_39202448249f5d461c33edfcc30d4a4a = L.circle(
+                [40.5506, 34.9556],
+                {"bubblingMouseEvents": true, "color": "#376937", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#376937", "fillOpacity": 0.3196078431372549, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6960.78431372549, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_3f13f2dcd3afe46981905aa932967273 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_460958523de22059ac5d736f1eab3b18 = $(`<div id="html_460958523de22059ac5d736f1eab3b18" style="width: 100.0%; height: 100.0%;"><b>Çorum</b><br>4 officials</div>`)[0];
+                popup_3f13f2dcd3afe46981905aa932967273.setContent(html_460958523de22059ac5d736f1eab3b18);
+            
+        
+
+        circle_39202448249f5d461c33edfcc30d4a4a.bindPopup(popup_3f13f2dcd3afe46981905aa932967273)
+        ;
+
+        
+    
+    
+            circle_39202448249f5d461c33edfcc30d4a4a.bindTooltip(
+                `<div>
+                     Çorum: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_6bba2e9cc8da699ea0056f7cf00861b4 = L.circle(
+                [40.7569, 30.3783],
+                {"bubblingMouseEvents": true, "color": "#3c6e3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3c6e3c", "fillOpacity": 0.33431372549019606, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8431.372549019608, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_7224acd51eb1afbe42e97b11cc2c4987 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5f67454d8b86989e74fbd28d71e0b47c = $(`<div id="html_5f67454d8b86989e74fbd28d71e0b47c" style="width: 100.0%; height: 100.0%;"><b>Sakarya</b><br>7 officials</div>`)[0];
+                popup_7224acd51eb1afbe42e97b11cc2c4987.setContent(html_5f67454d8b86989e74fbd28d71e0b47c);
+            
+        
+
+        circle_6bba2e9cc8da699ea0056f7cf00861b4.bindPopup(popup_7224acd51eb1afbe42e97b11cc2c4987)
+        ;
+
+        
+    
+    
+            circle_6bba2e9cc8da699ea0056f7cf00861b4.bindTooltip(
+                `<div>
+                     Sakarya: 7
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_69e6925ba3102b20a79328251762e3af = L.circle(
+                [37.7648, 30.5566],
+                {"bubblingMouseEvents": true, "color": "#376937", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#376937", "fillOpacity": 0.3196078431372549, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6960.78431372549, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_82fe144b2d5a6b0877234e748f641c82 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_879d4a17885e46c0430bb29573c35924 = $(`<div id="html_879d4a17885e46c0430bb29573c35924" style="width: 100.0%; height: 100.0%;"><b>Isparta</b><br>4 officials</div>`)[0];
+                popup_82fe144b2d5a6b0877234e748f641c82.setContent(html_879d4a17885e46c0430bb29573c35924);
+            
+        
+
+        circle_69e6925ba3102b20a79328251762e3af.bindPopup(popup_82fe144b2d5a6b0877234e748f641c82)
+        ;
+
+        
+    
+    
+            circle_69e6925ba3102b20a79328251762e3af.bindTooltip(
+                `<div>
+                     Isparta: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_af430ae4cd1f41ced139f569dcb67389 = L.circle(
+                [39.9334, 32.8597],
+                {"bubblingMouseEvents": true, "color": "#4f814f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4f814f", "fillOpacity": 0.3980392156862745, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14803.921568627451, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_036a6d2d6d22473b8b84df9c36c5a5b6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8c4a6d8b629ce9b506a1d76970e20738 = $(`<div id="html_8c4a6d8b629ce9b506a1d76970e20738" style="width: 100.0%; height: 100.0%;"><b>Ankara</b><br>20 officials</div>`)[0];
+                popup_036a6d2d6d22473b8b84df9c36c5a5b6.setContent(html_8c4a6d8b629ce9b506a1d76970e20738);
+            
+        
+
+        circle_af430ae4cd1f41ced139f569dcb67389.bindPopup(popup_036a6d2d6d22473b8b84df9c36c5a5b6)
+        ;
+
+        
+    
+    
+            circle_af430ae4cd1f41ced139f569dcb67389.bindTooltip(
+                `<div>
+                     Ankara: 20
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_00189ebb10fe0e7fd36c52bd2b33f20d = L.circle(
+                [38.4237, 27.1428],
+                {"bubblingMouseEvents": true, "color": "#588a58", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#588a58", "fillOpacity": 0.42745098039215684, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17745.098039215685, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_9773f143a5880a694601353a7b26d16b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c04d2d16a0664e37a868cad71e215d39 = $(`<div id="html_c04d2d16a0664e37a868cad71e215d39" style="width: 100.0%; height: 100.0%;"><b>İzmir</b><br>26 officials</div>`)[0];
+                popup_9773f143a5880a694601353a7b26d16b.setContent(html_c04d2d16a0664e37a868cad71e215d39);
+            
+        
+
+        circle_00189ebb10fe0e7fd36c52bd2b33f20d.bindPopup(popup_9773f143a5880a694601353a7b26d16b)
+        ;
+
+        
+    
+    
+            circle_00189ebb10fe0e7fd36c52bd2b33f20d.bindTooltip(
+                `<div>
+                     İzmir: 26
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_ca98fe8fff068da26cebad84d7ea07ef = L.circle(
+                [39.4242, 29.9833],
+                {"bubblingMouseEvents": true, "color": "#376937", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#376937", "fillOpacity": 0.3196078431372549, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6960.78431372549, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_89a7ae500aaad50efe4640781d69a0f8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_365dacae5ea8a5628804b0c4c057f7f3 = $(`<div id="html_365dacae5ea8a5628804b0c4c057f7f3" style="width: 100.0%; height: 100.0%;"><b>Kütahya</b><br>4 officials</div>`)[0];
+                popup_89a7ae500aaad50efe4640781d69a0f8.setContent(html_365dacae5ea8a5628804b0c4c057f7f3);
+            
+        
+
+        circle_ca98fe8fff068da26cebad84d7ea07ef.bindPopup(popup_89a7ae500aaad50efe4640781d69a0f8)
+        ;
+
+        
+    
+    
+            circle_ca98fe8fff068da26cebad84d7ea07ef.bindTooltip(
+                `<div>
+                     Kütahya: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_548622335c0db8fe560fe1838de1a93c = L.circle(
+                [38.7205, 35.4826],
+                {"bubblingMouseEvents": true, "color": "#407240", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#407240", "fillOpacity": 0.34901960784313724, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9901.960784313726, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_79b5e468e483ee568e163b1ff47f8de9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_068bb1412474b4f9bb6eca22cd43eb3d = $(`<div id="html_068bb1412474b4f9bb6eca22cd43eb3d" style="width: 100.0%; height: 100.0%;"><b>Kayseri</b><br>10 officials</div>`)[0];
+                popup_79b5e468e483ee568e163b1ff47f8de9.setContent(html_068bb1412474b4f9bb6eca22cd43eb3d);
+            
+        
+
+        circle_548622335c0db8fe560fe1838de1a93c.bindPopup(popup_79b5e468e483ee568e163b1ff47f8de9)
+        ;
+
+        
+    
+    
+            circle_548622335c0db8fe560fe1838de1a93c.bindTooltip(
+                `<div>
+                     Kayseri: 10
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_695aa3ed4f7fb0b7b8df0c2f97cc278e = L.circle(
+                [37.2153, 28.3636],
+                {"bubblingMouseEvents": true, "color": "#376937", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#376937", "fillOpacity": 0.3196078431372549, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6960.78431372549, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_cf70768d10c077184ba5b564e3206d8c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4e7e3d19d285dd0b966172dc624fc5c5 = $(`<div id="html_4e7e3d19d285dd0b966172dc624fc5c5" style="width: 100.0%; height: 100.0%;"><b>Muğla</b><br>4 officials</div>`)[0];
+                popup_cf70768d10c077184ba5b564e3206d8c.setContent(html_4e7e3d19d285dd0b966172dc624fc5c5);
+            
+        
+
+        circle_695aa3ed4f7fb0b7b8df0c2f97cc278e.bindPopup(popup_cf70768d10c077184ba5b564e3206d8c)
+        ;
+
+        
+    
+    
+            circle_695aa3ed4f7fb0b7b8df0c2f97cc278e.bindTooltip(
+                `<div>
+                     Muğla: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_a3f50ca95510a04e5c4ef2cd2a17d1f1 = L.circle(
+                [40.8533, 29.8815],
+                {"bubblingMouseEvents": true, "color": "#3c6e3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3c6e3c", "fillOpacity": 0.33431372549019606, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8431.372549019608, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_dafe2b04f5060b1dadbffeba8ab7df2f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a5dcd5b97728995822c7f1cc86b2afc8 = $(`<div id="html_a5dcd5b97728995822c7f1cc86b2afc8" style="width: 100.0%; height: 100.0%;"><b>Kocaeli</b><br>7 officials</div>`)[0];
+                popup_dafe2b04f5060b1dadbffeba8ab7df2f.setContent(html_a5dcd5b97728995822c7f1cc86b2afc8);
+            
+        
+
+        circle_a3f50ca95510a04e5c4ef2cd2a17d1f1.bindPopup(popup_dafe2b04f5060b1dadbffeba8ab7df2f)
+        ;
+
+        
+    
+    
+            circle_a3f50ca95510a04e5c4ef2cd2a17d1f1.bindTooltip(
+                `<div>
+                     Kocaeli: 7
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_1be69f540e849503cf11753768fc0d96 = L.circle(
+                [41.3887, 33.7827],
+                {"bubblingMouseEvents": true, "color": "#3c6e3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3c6e3c", "fillOpacity": 0.33431372549019606, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8431.372549019608, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_505af6b712b93f79745cf013d5f31915 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a84b68cf18a70b87c101a18e4551428d = $(`<div id="html_a84b68cf18a70b87c101a18e4551428d" style="width: 100.0%; height: 100.0%;"><b>Kastamonu</b><br>7 officials</div>`)[0];
+                popup_505af6b712b93f79745cf013d5f31915.setContent(html_a84b68cf18a70b87c101a18e4551428d);
+            
+        
+
+        circle_1be69f540e849503cf11753768fc0d96.bindPopup(popup_505af6b712b93f79745cf013d5f31915)
+        ;
+
+        
+    
+    
+            circle_1be69f540e849503cf11753768fc0d96.bindTooltip(
+                `<div>
+                     Kastamonu: 7
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_7210110d0919904000abfab3a7db1af6 = L.circle(
+                [36.8121, 34.6415],
+                {"bubblingMouseEvents": true, "color": "#366836", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#366836", "fillOpacity": 0.31470588235294117, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6470.588235294117, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_78dfa651c8ac97d5d421ab5d2138e083 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_869882598264e7d8f262e2a8b718c4b8 = $(`<div id="html_869882598264e7d8f262e2a8b718c4b8" style="width: 100.0%; height: 100.0%;"><b>Mersin</b><br>3 officials</div>`)[0];
+                popup_78dfa651c8ac97d5d421ab5d2138e083.setContent(html_869882598264e7d8f262e2a8b718c4b8);
+            
+        
+
+        circle_7210110d0919904000abfab3a7db1af6.bindPopup(popup_78dfa651c8ac97d5d421ab5d2138e083)
+        ;
+
+        
+    
+    
+            circle_7210110d0919904000abfab3a7db1af6.bindTooltip(
+                `<div>
+                     Mersin: 3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_b1819e868715163df14d9f484738b9b2 = L.circle(
+                [40.9839, 37.8764],
+                {"bubblingMouseEvents": true, "color": "#376937", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#376937", "fillOpacity": 0.3196078431372549, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6960.78431372549, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_e630e06874e60699ae8e16a0ce431d5d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2c7216c3fbff62b4e3223626f355d82b = $(`<div id="html_2c7216c3fbff62b4e3223626f355d82b" style="width: 100.0%; height: 100.0%;"><b>Ordu</b><br>4 officials</div>`)[0];
+                popup_e630e06874e60699ae8e16a0ce431d5d.setContent(html_2c7216c3fbff62b4e3223626f355d82b);
+            
+        
+
+        circle_b1819e868715163df14d9f484738b9b2.bindPopup(popup_e630e06874e60699ae8e16a0ce431d5d)
+        ;
+
+        
+    
+    
+            circle_b1819e868715163df14d9f484738b9b2.bindTooltip(
+                `<div>
+                     Ordu: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_68d5713bda8c0316bc86bab177abf3bd = L.circle(
+                [41.0015, 39.7178],
+                {"bubblingMouseEvents": true, "color": "#497b49", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#497b49", "fillOpacity": 0.3784313725490196, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12843.137254901962, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_e53b2de4f3b8171922cca72d4f2e1694 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cef3e2c67e9442ca9228245a2bdbd995 = $(`<div id="html_cef3e2c67e9442ca9228245a2bdbd995" style="width: 100.0%; height: 100.0%;"><b>Trabzon</b><br>16 officials</div>`)[0];
+                popup_e53b2de4f3b8171922cca72d4f2e1694.setContent(html_cef3e2c67e9442ca9228245a2bdbd995);
+            
+        
+
+        circle_68d5713bda8c0316bc86bab177abf3bd.bindPopup(popup_e53b2de4f3b8171922cca72d4f2e1694)
+        ;
+
+        
+    
+    
+            circle_68d5713bda8c0316bc86bab177abf3bd.bindTooltip(
+                `<div>
+                     Trabzon: 16
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_850308998a1a401b2e1a74517331095b = L.circle(
+                [37.8667, 32.4833],
+                {"bubblingMouseEvents": true, "color": "#4c7e4c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4c7e4c", "fillOpacity": 0.38823529411764707, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13823.529411764706, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_d916d7676f403a487ce28fbb2363e577 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9e219dbc4c6657a36aea8487dcd47ae6 = $(`<div id="html_9e219dbc4c6657a36aea8487dcd47ae6" style="width: 100.0%; height: 100.0%;"><b>Konya</b><br>18 officials</div>`)[0];
+                popup_d916d7676f403a487ce28fbb2363e577.setContent(html_9e219dbc4c6657a36aea8487dcd47ae6);
+            
+        
+
+        circle_850308998a1a401b2e1a74517331095b.bindPopup(popup_d916d7676f403a487ce28fbb2363e577)
+        ;
+
+        
+    
+    
+            circle_850308998a1a401b2e1a74517331095b.bindTooltip(
+                `<div>
+                     Konya: 18
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_3ca11f8bef10476adb05f60486d5ca4e = L.circle(
+                [42.0231, 35.1531],
+                {"bubblingMouseEvents": true, "color": "#396b39", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#396b39", "fillOpacity": 0.32450980392156864, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7450.980392156863, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_76612b50745355626e6368ea182d1e92 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_23b268d5be557d62a11b47eab241e29c = $(`<div id="html_23b268d5be557d62a11b47eab241e29c" style="width: 100.0%; height: 100.0%;"><b>Sinop</b><br>5 officials</div>`)[0];
+                popup_76612b50745355626e6368ea182d1e92.setContent(html_23b268d5be557d62a11b47eab241e29c);
+            
+        
+
+        circle_3ca11f8bef10476adb05f60486d5ca4e.bindPopup(popup_76612b50745355626e6368ea182d1e92)
+        ;
+
+        
+    
+    
+            circle_3ca11f8bef10476adb05f60486d5ca4e.bindTooltip(
+                `<div>
+                     Sinop: 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_26de66bcef6f96285f1f060388554b4d = L.circle(
+                [39.7767, 30.5206],
+                {"bubblingMouseEvents": true, "color": "#396b39", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#396b39", "fillOpacity": 0.32450980392156864, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7450.980392156863, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_7a61ded565d3ee4d9dec4192852cd46d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_610a1df43603194b1d1c4ff8f03c8d8f = $(`<div id="html_610a1df43603194b1d1c4ff8f03c8d8f" style="width: 100.0%; height: 100.0%;"><b>Eskişehir</b><br>5 officials</div>`)[0];
+                popup_7a61ded565d3ee4d9dec4192852cd46d.setContent(html_610a1df43603194b1d1c4ff8f03c8d8f);
+            
+        
+
+        circle_26de66bcef6f96285f1f060388554b4d.bindPopup(popup_7a61ded565d3ee4d9dec4192852cd46d)
+        ;
+
+        
+    
+    
+            circle_26de66bcef6f96285f1f060388554b4d.bindTooltip(
+                `<div>
+                     Eskişehir: 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_ebdb1a87ddb2618e75d02a7cf5095d5b = L.circle(
+                [40.9128, 38.3895],
+                {"bubblingMouseEvents": true, "color": "#366836", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#366836", "fillOpacity": 0.31470588235294117, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6470.588235294117, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_d96ec82d6a28b9907e3dcb78d394dded = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_005fc6350b827ba732d59a1913deb037 = $(`<div id="html_005fc6350b827ba732d59a1913deb037" style="width: 100.0%; height: 100.0%;"><b>Giresun</b><br>3 officials</div>`)[0];
+                popup_d96ec82d6a28b9907e3dcb78d394dded.setContent(html_005fc6350b827ba732d59a1913deb037);
+            
+        
+
+        circle_ebdb1a87ddb2618e75d02a7cf5095d5b.bindPopup(popup_d96ec82d6a28b9907e3dcb78d394dded)
+        ;
+
+        
+    
+    
+            circle_ebdb1a87ddb2618e75d02a7cf5095d5b.bindTooltip(
+                `<div>
+                     Giresun: 3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_cafd42755c37d420d3c1ba296b53cb4e = L.circle(
+                [41.2867, 36.33],
+                {"bubblingMouseEvents": true, "color": "#3a6c3a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3a6c3a", "fillOpacity": 0.32941176470588235, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7941.176470588235, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_1bd6da997daa893f18ea57eeaba0711f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a4d45ab6ab5d6d41cc2ec4d74cd95ac9 = $(`<div id="html_a4d45ab6ab5d6d41cc2ec4d74cd95ac9" style="width: 100.0%; height: 100.0%;"><b>Samsun</b><br>6 officials</div>`)[0];
+                popup_1bd6da997daa893f18ea57eeaba0711f.setContent(html_a4d45ab6ab5d6d41cc2ec4d74cd95ac9);
+            
+        
+
+        circle_cafd42755c37d420d3c1ba296b53cb4e.bindPopup(popup_1bd6da997daa893f18ea57eeaba0711f)
+        ;
+
+        
+    
+    
+            circle_cafd42755c37d420d3c1ba296b53cb4e.bindTooltip(
+                `<div>
+                     Samsun: 6
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_04b8d7b5f697caf772a5b7438dc580a7 = L.circle(
+                [36.8969, 30.7133],
+                {"bubblingMouseEvents": true, "color": "#396b39", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#396b39", "fillOpacity": 0.32450980392156864, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7450.980392156863, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_1ed495c87398b9f8f2f026c1d62f9985 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b5505388ad0ce7b110b741c06399c47 = $(`<div id="html_5b5505388ad0ce7b110b741c06399c47" style="width: 100.0%; height: 100.0%;"><b>Antalya</b><br>5 officials</div>`)[0];
+                popup_1ed495c87398b9f8f2f026c1d62f9985.setContent(html_5b5505388ad0ce7b110b741c06399c47);
+            
+        
+
+        circle_04b8d7b5f697caf772a5b7438dc580a7.bindPopup(popup_1ed495c87398b9f8f2f026c1d62f9985)
+        ;
+
+        
+    
+    
+            circle_04b8d7b5f697caf772a5b7438dc580a7.bindTooltip(
+                `<div>
+                     Antalya: 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_75b6532a45f01eceec493e9cd3405eb6 = L.circle(
+                [37.7765, 29.0864],
+                {"bubblingMouseEvents": true, "color": "#376937", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#376937", "fillOpacity": 0.3196078431372549, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6960.78431372549, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_f36e0393766ff5e810297dcc16adc352 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d5489a355f0e28b41e54b58093ade58a = $(`<div id="html_d5489a355f0e28b41e54b58093ade58a" style="width: 100.0%; height: 100.0%;"><b>Denizli</b><br>4 officials</div>`)[0];
+                popup_f36e0393766ff5e810297dcc16adc352.setContent(html_d5489a355f0e28b41e54b58093ade58a);
+            
+        
+
+        circle_75b6532a45f01eceec493e9cd3405eb6.bindPopup(popup_f36e0393766ff5e810297dcc16adc352)
+        ;
+
+        
+    
+    
+            circle_75b6532a45f01eceec493e9cd3405eb6.bindTooltip(
+                `<div>
+                     Denizli: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_149e5c2be81aa2a4498b0084b7bb3781 = L.circle(
+                [39.6484, 27.8826],
+                {"bubblingMouseEvents": true, "color": "#376937", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#376937", "fillOpacity": 0.3196078431372549, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6960.78431372549, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_aeb1d15e59027670ec26f3da1556d06d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2219c9e1f4f8ada63f98f433945071d8 = $(`<div id="html_2219c9e1f4f8ada63f98f433945071d8" style="width: 100.0%; height: 100.0%;"><b>Balıkesir</b><br>4 officials</div>`)[0];
+                popup_aeb1d15e59027670ec26f3da1556d06d.setContent(html_2219c9e1f4f8ada63f98f433945071d8);
+            
+        
+
+        circle_149e5c2be81aa2a4498b0084b7bb3781.bindPopup(popup_aeb1d15e59027670ec26f3da1556d06d)
+        ;
+
+        
+    
+    
+            circle_149e5c2be81aa2a4498b0084b7bb3781.bindTooltip(
+                `<div>
+                     Balıkesir: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_8acce0e6f6b381d92186addba06e692f = L.circle(
+                [38.7507, 30.5567],
+                {"bubblingMouseEvents": true, "color": "#3c6e3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3c6e3c", "fillOpacity": 0.33431372549019606, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8431.372549019608, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_101ddb2fe9b957f156e3a24d993f06b8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_acb4b5b08fa1f2310a2bd97896f7d0fc = $(`<div id="html_acb4b5b08fa1f2310a2bd97896f7d0fc" style="width: 100.0%; height: 100.0%;"><b>Afyonkarahisar</b><br>7 officials</div>`)[0];
+                popup_101ddb2fe9b957f156e3a24d993f06b8.setContent(html_acb4b5b08fa1f2310a2bd97896f7d0fc);
+            
+        
+
+        circle_8acce0e6f6b381d92186addba06e692f.bindPopup(popup_101ddb2fe9b957f156e3a24d993f06b8)
+        ;
+
+        
+    
+    
+            circle_8acce0e6f6b381d92186addba06e692f.bindTooltip(
+                `<div>
+                     Afyonkarahisar: 7
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_95c92d815fa47a040168024175c8d3d1 = L.circle(
+                [41.1828, 41.8183],
+                {"bubblingMouseEvents": true, "color": "#376937", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#376937", "fillOpacity": 0.3196078431372549, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6960.78431372549, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_b6f5dae93362bac806dcc5ac2c61761f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_51eb892c2f7cc8418217a471f958d7e8 = $(`<div id="html_51eb892c2f7cc8418217a471f958d7e8" style="width: 100.0%; height: 100.0%;"><b>Artvin</b><br>4 officials</div>`)[0];
+                popup_b6f5dae93362bac806dcc5ac2c61761f.setContent(html_51eb892c2f7cc8418217a471f958d7e8);
+            
+        
+
+        circle_95c92d815fa47a040168024175c8d3d1.bindPopup(popup_b6f5dae93362bac806dcc5ac2c61761f)
+        ;
+
+        
+    
+    
+            circle_95c92d815fa47a040168024175c8d3d1.bindTooltip(
+                `<div>
+                     Artvin: 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_f19802cd3484fdde8cfb181ba1e200e3 = L.circle(
+                [37.0662, 37.3833],
+                {"bubblingMouseEvents": true, "color": "#3a6c3a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3a6c3a", "fillOpacity": 0.32941176470588235, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7941.176470588235, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_6afcf113d415c91a99718db783d095e9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c723ee92d64bbd452ede73fd2643c3a1 = $(`<div id="html_c723ee92d64bbd452ede73fd2643c3a1" style="width: 100.0%; height: 100.0%;"><b>Gaziantep</b><br>6 officials</div>`)[0];
+                popup_6afcf113d415c91a99718db783d095e9.setContent(html_c723ee92d64bbd452ede73fd2643c3a1);
+            
+        
+
+        circle_f19802cd3484fdde8cfb181ba1e200e3.bindPopup(popup_6afcf113d415c91a99718db783d095e9)
+        ;
+
+        
+    
+    
+            circle_f19802cd3484fdde8cfb181ba1e200e3.bindTooltip(
+                `<div>
+                     Gaziantep: 6
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_403f15d881b938ac2b763dad6d5eee01 = L.circle(
+                [40.4386, 39.4814],
+                {"bubblingMouseEvents": true, "color": "#396b39", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#396b39", "fillOpacity": 0.32450980392156864, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7450.980392156863, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_aec97be5a34bdbd055028b883a0aa21b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_558463b53bbf01cdeb601f0991a79f32 = $(`<div id="html_558463b53bbf01cdeb601f0991a79f32" style="width: 100.0%; height: 100.0%;"><b>Gümüşhane</b><br>5 officials</div>`)[0];
+                popup_aec97be5a34bdbd055028b883a0aa21b.setContent(html_558463b53bbf01cdeb601f0991a79f32);
+            
+        
+
+        circle_403f15d881b938ac2b763dad6d5eee01.bindPopup(popup_aec97be5a34bdbd055028b883a0aa21b)
+        ;
+
+        
+    
+    
+            circle_403f15d881b938ac2b763dad6d5eee01.bindTooltip(
+                `<div>
+                     Gümüşhane: 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_52f192f78f22eb44d0fc4ff94641c61f = L.circle(
+                [40.3167, 36.55],
+                {"bubblingMouseEvents": true, "color": "#396b39", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#396b39", "fillOpacity": 0.32450980392156864, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7450.980392156863, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_214ce558deee9a4eba49b060cda51071 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_46e4e91fc289264a2589ef8cc6da9159 = $(`<div id="html_46e4e91fc289264a2589ef8cc6da9159" style="width: 100.0%; height: 100.0%;"><b>Tokat</b><br>5 officials</div>`)[0];
+                popup_214ce558deee9a4eba49b060cda51071.setContent(html_46e4e91fc289264a2589ef8cc6da9159);
+            
+        
+
+        circle_52f192f78f22eb44d0fc4ff94641c61f.bindPopup(popup_214ce558deee9a4eba49b060cda51071)
+        ;
+
+        
+    
+    
+            circle_52f192f78f22eb44d0fc4ff94641c61f.bindTooltip(
+                `<div>
+                     Tokat: 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_bf07ddb88c67121572a013369e094f88 = L.circle(
+                [39.82, 34.8147],
+                {"bubblingMouseEvents": true, "color": "#3f713f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3f713f", "fillOpacity": 0.34411764705882353, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9411.764705882353, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_549af7258950f6958c97e96078654958 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4a3960f9efcc68e62bb6beaacacb4f0d = $(`<div id="html_4a3960f9efcc68e62bb6beaacacb4f0d" style="width: 100.0%; height: 100.0%;"><b>Yozgat</b><br>9 officials</div>`)[0];
+                popup_549af7258950f6958c97e96078654958.setContent(html_4a3960f9efcc68e62bb6beaacacb4f0d);
+            
+        
+
+        circle_bf07ddb88c67121572a013369e094f88.bindPopup(popup_549af7258950f6958c97e96078654958)
+        ;
+
+        
+    
+    
+            circle_bf07ddb88c67121572a013369e094f88.bindTooltip(
+                `<div>
+                     Yozgat: 9
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_8eae9ea3dad4dba241b1f69c51fb6bca = L.circle(
+                [41.6771, 26.5557],
+                {"bubblingMouseEvents": true, "color": "#396b39", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#396b39", "fillOpacity": 0.32450980392156864, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7450.980392156863, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_e293c23a3908dae3cb165b08dc1dbe3f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d16a6863f0e1ba43670c71b47c319ada = $(`<div id="html_d16a6863f0e1ba43670c71b47c319ada" style="width: 100.0%; height: 100.0%;"><b>Edirne</b><br>5 officials</div>`)[0];
+                popup_e293c23a3908dae3cb165b08dc1dbe3f.setContent(html_d16a6863f0e1ba43670c71b47c319ada);
+            
+        
+
+        circle_8eae9ea3dad4dba241b1f69c51fb6bca.bindPopup(popup_e293c23a3908dae3cb165b08dc1dbe3f)
+        ;
+
+        
+    
+    
+            circle_8eae9ea3dad4dba241b1f69c51fb6bca.bindTooltip(
+                `<div>
+                     Edirne: 5
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_508c859a7f5c23a0161d04fd94abd061 = L.circle(
+                [40.9833, 27.5167],
+                {"bubblingMouseEvents": true, "color": "#346634", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#346634", "fillOpacity": 0.30980392156862746, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5980.392156862745, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_01e9e376c1d4fc3ba0a6b663608e2f54 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b98f0729dad91ff32fffbb092e70af26 = $(`<div id="html_b98f0729dad91ff32fffbb092e70af26" style="width: 100.0%; height: 100.0%;"><b>Tekirdağ</b><br>2 officials</div>`)[0];
+                popup_01e9e376c1d4fc3ba0a6b663608e2f54.setContent(html_b98f0729dad91ff32fffbb092e70af26);
+            
+        
+
+        circle_508c859a7f5c23a0161d04fd94abd061.bindPopup(popup_01e9e376c1d4fc3ba0a6b663608e2f54)
+        ;
+
+        
+    
+    
+            circle_508c859a7f5c23a0161d04fd94abd061.bindTooltip(
+                `<div>
+                     Tekirdağ: 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_200cb1e683082c4b8f4d4334d566ea65 = L.circle(
+                [40.7339, 31.6061],
+                {"bubblingMouseEvents": true, "color": "#366836", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#366836", "fillOpacity": 0.31470588235294117, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6470.588235294117, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_0ebf48056594cb3c32702f3b8d319f72 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1aaf51ab23b46d6caa8719e52f61337f = $(`<div id="html_1aaf51ab23b46d6caa8719e52f61337f" style="width: 100.0%; height: 100.0%;"><b>Bolu</b><br>3 officials</div>`)[0];
+                popup_0ebf48056594cb3c32702f3b8d319f72.setContent(html_1aaf51ab23b46d6caa8719e52f61337f);
+            
+        
+
+        circle_200cb1e683082c4b8f4d4334d566ea65.bindPopup(popup_0ebf48056594cb3c32702f3b8d319f72)
+        ;
+
+        
+    
+    
+            circle_200cb1e683082c4b8f4d4334d566ea65.bindTooltip(
+                `<div>
+                     Bolu: 3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_92e443cc18f1c6845acca192096462dd = L.circle(
+                [39.1425, 34.1709],
+                {"bubblingMouseEvents": true, "color": "#366836", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#366836", "fillOpacity": 0.31470588235294117, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6470.588235294117, "stroke": true, "weight": 2}
+            ).addTo(map_02afac68ad86b94393970045a1ba1b1b);
+        
+    
+        var popup_daf9dcce9ceb72bdbabcd6e278e8da28 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e5723672ade8352b4fb2f9eccab576d6 = $(`<div id="html_e5723672ade8352b4fb2f9eccab576d6" style="width: 100.0%; height: 100.0%;"><b>Kırşehir</b><br>3 officials</div>`)[0];
+                popup_daf9dcce9ceb72bdbabcd6e278e8da28.setContent(html_e5723672ade8352b4fb2f9eccab576d6);
+            
+        
+
+        circle_92e443cc18f1c6845acca192096462dd.bindPopup(popup_daf9dcce9ceb72bdbabcd6e278e8da28)
+        ;
+
+        
+    
+    
+            circle_92e443cc18f1c6845acca192096462dd.bindTooltip(
+                `<div>
+                     Kırşehir: 3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
