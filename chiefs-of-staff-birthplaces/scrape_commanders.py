@@ -120,35 +120,51 @@ def extract_birthplace_from_infobox(soup: BeautifulSoup) -> Optional[str]:
         th = row.find('th')
         if th:
             header_text = th.get_text(strip=True).lower()
-            # Look for birth-related fields
+            # Look for birth-related fields (Doğum means birth in Turkish)
             if any(keyword in header_text for keyword in ['doğum', 'doğ.', 'birth']):
                 td = row.find('td')
                 if td:
                     # Extract text and clean it
                     text = td.get_text(strip=True)
                     
-                    # Try to extract location (often after a comma or newline)
-                    # Remove date information
-                    lines = text.split('\n')
-                    for line in lines:
-                        # Skip lines that look like dates
-                        if re.search(r'\d{4}|\d{1,2}\s+\w+\s+\d{4}', line):
-                            continue
-                        # Look for location names (Turkish provinces or cities)
-                        if line and len(line) > 2:
-                            # Clean up
-                            location = re.sub(r'\[.*?\]', '', line)  # Remove references
-                            location = location.strip(',').strip()
-                            if location:
-                                return location
+                    # Wikipedia format is typically: "Date, Location" or "Date\nLocation"
+                    # Example: "15 Şubat 1926, Adana, Türkiye" or "23 Ağustos 1989\nKemal Yamak"
                     
-                    # If no line worked, try the whole text
-                    # Look for location after comma or newline
+                    # Remove reference markers [1], [2], etc.
+                    text = re.sub(r'\[.*?\]', '', text)
+                    
+                    # Split by comma or newline
                     parts = re.split(r'[,\n]', text)
-                    for part in parts[1:]:  # Skip first part (usually date)
-                        part = re.sub(r'\[.*?\]', '', part).strip()
-                        if part and not re.search(r'\d{4}', part):
-                            return part
+                    
+                    # The birthplace is usually the first part after the date
+                    # Date patterns: "15 Şubat 1926" or "1926" or "23 Ağustos 1989"
+                    for i, part in enumerate(parts):
+                        part = part.strip()
+                        
+                        # Skip empty parts
+                        if not part:
+                            continue
+                        
+                        # If this part contains a date (with year), the next part is likely the location
+                        if re.search(r'\d{4}', part):
+                            # Look at the next part
+                            if i + 1 < len(parts):
+                                location = parts[i + 1].strip()
+                                # Clean up common suffixes like ", Türkiye"
+                                location = re.sub(r',?\s*Türkiye$', '', location)
+                                location = re.sub(r',?\s*Turkey$', '', location)
+                                if location and len(location) > 1:
+                                    return location
+                            continue
+                        
+                        # If this part doesn't contain a year and we've passed the first part (date),
+                        # this might be the location
+                        if i > 0 and not re.search(r'\d{4}', part):
+                            location = part.strip()
+                            location = re.sub(r',?\s*Türkiye$', '', location)
+                            location = re.sub(r',?\s*Turkey$', '', location)
+                            if location and len(location) > 1:
+                                return location
     
     return None
 
