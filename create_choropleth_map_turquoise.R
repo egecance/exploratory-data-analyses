@@ -213,11 +213,11 @@ map <- leaflet(turkey) %>%
   ) %>%
   setView(lng = 35, lat = 39, zoom = 6) %>%
   addControl(
-    html = "<div style='margin: 10px; background: white; padding: 15px; border-radius: 5px; max-width: 300px;'>
-            <h3 style='margin: 0 0 10px 0;'>Turkish Officials' Birthplaces by Province</h3>
-            <div style='font-size: 12px; line-height: 1.6;'>
+    html = "<div style='margin: 10px; background: rgba(255, 255, 255, 0.95); padding: 15px; border-radius: 5px; max-width: 280px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);'>
+            <h3 style='margin: 0 0 10px 0; font-size: 16px;'>Turkish Officials' Birthplaces by Province</h3>
+            <div style='font-size: 11px; line-height: 1.5;'>
             <strong>Included Officials:</strong>
-            <ul style='margin: 5px 0; padding-left: 20px;'>
+            <ul style='margin: 5px 0; padding-left: 18px;'>
               <li>Prime Ministers</li>
               <li>Ministers (Interior, Foreign, Justice, Finance, Education, Health)</li>
               <li>Military Commanders (Chief of Staff, Army, Navy, Air Force)</li>
@@ -228,7 +228,7 @@ map <- leaflet(turkey) %>%
             </ul>
             </div>
             </div>",
-    position = "topright"
+    position = "topleft"
   )
 
 # Save the map
