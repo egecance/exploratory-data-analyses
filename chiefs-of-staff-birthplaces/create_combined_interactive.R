@@ -555,9 +555,10 @@ map <- map %>%
   addLegend(
     position = "bottomright",
     colors = c("#e8e8e8", "#d4e0b8", "#c4d4a8", "#a8b88f", "#8a9e6f", "#6c8450", "#4d6a30", "#3a5020", "#2d3a1a", "#1a2410"),
-    labels = c("0", "1", "2", "3-4", "5-7", "8-10", "11-15", "16-20", "21-25", "26+"),
-    title = "Number of<br/>Commanders",
-    opacity = 0.9
+    labels = c("", "", "", "", "", "", "", "", "", ""),
+    title = "<div style=\"text-align: center;\">Number of Commanders<br/><span style=\"font-size: 11px; font-weight: normal;\">Few ← → Many</span></div>",
+    opacity = 0.9,
+    labFormat = function(type, cuts, p) { return("") }
   )
 
 message("Saving combined interactive map...")
